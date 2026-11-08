@@ -2,6 +2,8 @@
 
 Use only evidence collected from the authorized isolated lab. Screenshots listed below are **recommendations, not existing artifacts**. Redact session cookies and CSRF tokens before placing captures on slides. The automated figures come from the Stage 5 local test run; replace or supplement them only with actual later results.
 
+The editable deck is [CampusSecure_Presentation.pptx](presentation/CampusSecure_Presentation.pptx), with [speaker notes](presentation/SPEAKER_NOTES.md). Run `python -m scripts.build_presentation` from the repository root to regenerate it.
+
 ## Slide 1 — Title and objectives
 
 **Key talking points**

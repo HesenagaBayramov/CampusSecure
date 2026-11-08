@@ -33,7 +33,8 @@ CampusSecure/
 │   └── static/                 # Portal CSS/JS, SVG icons, local Bootstrap
 ├── scripts/
 │   ├── seed_db.py
-│   └── reset_db.py
+│   ├── reset_db.py
+│   └── build_presentation.py
 ├── tests/
 │   ├── test_app.py
 │   ├── test_lab_modes.py
@@ -42,10 +43,14 @@ CampusSecure/
 │   ├── LAB_GUIDE.md
 │   ├── SECURITY_REPORT.md
 │   ├── PROJECT_ARCHITECTURE.md
-│   └── PRESENTATION_OUTLINE.md
+│   ├── PRESENTATION_OUTLINE.md
+│   └── presentation/
+│       ├── CampusSecure_Presentation.pptx
+│       └── SPEAKER_NOTES.md
 ├── run.py
 ├── requirements.txt
 ├── requirements-dev.txt
+├── requirements-presentation.txt
 └── PROJECT_SPEC.md
 ```
 
@@ -177,3 +182,14 @@ Both suites use temporary SQLite databases and do not mutate the default demonst
 Use only the fictional seed data and an explicitly authorized, isolated target. Do not run automated scanners or connect the vulnerable instance to a public or university network. Finish by stopping Flask, closing Burp, and resetting the database if the demo should return to its original state.
 
 Additional documents: [architecture](docs/PROJECT_ARCHITECTURE.md), [security report](docs/SECURITY_REPORT.md), and [seven-slide presentation outline](docs/PRESENTATION_OUTLINE.md).
+
+## Editable presentation
+
+The PowerPoint deck is [CampusSecure_Presentation.pptx](docs/presentation/CampusSecure_Presentation.pptx). Its diagrams, labels, cards, and screenshot placeholders are editable PowerPoint shapes. To regenerate it from the repository root:
+
+```bash
+python -m pip install -r requirements-presentation.txt
+python -m scripts.build_presentation
+```
+
+The build script reopens the saved PPTX and checks its seven-slide structure. Brief presenter notes are in [SPEAKER_NOTES.md](docs/presentation/SPEAKER_NOTES.md). Manual Burp captures remain placeholders until the authorized lab is performed.
