@@ -1,4 +1,4 @@
-# CampusSecure — Stages 1–3
+# CampusSecure — Stages 1–4
 
 CampusSecure is a fictional university portal for a local Information Security lab. It provides a working backend, SQLite fixtures, session authentication, a responsive portal, and three controlled API authorization scenarios. All accounts and records are synthetic.
 
@@ -37,10 +37,12 @@ These are published lab credentials. Do not use this application or database for
 
 ```bash
 source .venv/bin/activate
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
 python -m unittest discover -s tests -v
 ```
 
-Tests create temporary SQLite databases and do not change the demo database.
+The pytest command runs the new Stage 4 security tests and the existing unittest suite. The unittest command runs the original suite separately. Tests create temporary SQLite databases and do not change the demo database. See [docs/LAB_GUIDE.md](docs/LAB_GUIDE.md) for the authorized manual verification procedure, expected responses, VM network setup, and reset steps.
 
 ## Interface and offline assets
 

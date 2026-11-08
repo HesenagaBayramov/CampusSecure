@@ -2,14 +2,14 @@
 
 ## Purpose and scope
 
-A fictional university student portal used for manual web application penetration testing and security hardening with Burp Suite in a strictly isolated, locally controlled educational laboratory. No real accounts, student data, university integrations, external APIs or cloud services. Stages 1–3 are implemented; later work must preserve these routes and seeded IDs unless this specification is deliberately revised.
+A fictional university student portal used for manual web application penetration testing and security hardening with Burp Suite in a strictly isolated, locally controlled educational laboratory. No real accounts, student data, university integrations, external APIs or cloud services. Stages 1–4 are implemented; later work must preserve these routes and seeded IDs unless this specification is deliberately revised.
 
 ## Five-stage delivery plan
 
 1. **Backend foundation (complete):** Flask factory, SQLite schema and repeatable fixtures, hashed demo passwords, session login/logout, protected student and administrator routes, secure role and ownership checks, tests and startup instructions.
 2. **Interface (complete):** Responsive HTML5/Bootstrap 5 and vanilla JavaScript for the student and admin pages, preserving form actions, parameter names, route contracts and server-side checks. Includes sidebar/offcanvas navigation, status badges, dashboard previews, request search/filter, administrator academic request review, form feedback and error pages.
 3. **Controlled authorization lab (complete):** Exactly three API scenarios differ by `LAB_MODE`: request ownership, administrator announcement creation, and profile role-field authorization. Both modes use identical endpoints and schema. The HTML portal retains its original authorization checks; mode selection requires an application restart and has no website control.
-4. **Verification and lab guide:** Add automated regression tests for both modes, manual Burp Suite request/response procedures for each case, expected observations, and remediation explanations. Avoid scripts that target external systems.
+4. **Verification and lab guide (complete):** Pytest regression checks for both modes use a fresh temporary SQLite file per case. `docs/LAB_GUIDE.md` documents authorized manual Burp Suite request/response procedures, expected observations, reset steps, isolation, and shutdown. The guide does not claim that a Burp session has been executed.
 5. **Final hardening and handoff:** Review secure-mode authorization and input handling, refine tests, complete setup and reset documentation, gather local evidence, and prepare the final university project report/package.
 
 ## Architecture
@@ -25,6 +25,7 @@ A fictional university student portal used for manual web application penetratio
 - API POST requests use the existing session CSRF token from an `X-CSRF-Token` header, JSON `csrf_token` field, or form `csrf_token` field. The API accepts JSON objects and URL-encoded form bodies and returns JSON for success and errors. HTML forms and routes remain separate.
 - `run.py` defaults to `127.0.0.1:5000` and disables debug and reloader. A non-loopback bind requires `CAMPUSSECURE_ENABLE_HOST_ONLY=1`, an explicit private `CAMPUSSECURE_HOST_ONLY_IP`, and `CAMPUSSECURE_HOST_ONLY_INTERFACE`; the selected IP must be assigned to that named local interface. The operator must also verify that the adapter is actually isolated Host-only. The app never chooses `0.0.0.0`.
 - `LAB_MODE` accepts `secure` (default) and `vulnerable`. The latter is only for the locally controlled synthetic lab.
+- `requirements-dev.txt` adds pytest for Stage 4 verification. `tests/test_security.py` checks authentication, the three API comparisons, persisted effects, reset repeatability, configuration, portal rendering and core admin review in isolated temporary databases. The earlier unittest suites remain available.
 - No Redis, Docker, React, external APIs or cloud services. Flask is the only direct runtime dependency; Werkzeug and Jinja are Flask dependencies.
 
 ## Database design
@@ -66,4 +67,4 @@ Anonymous protected HTML GETs redirect to `/login`; authenticated wrong-role HTM
 
 Student identity and role come from the user row selected by the signed session's `user_id` on every request, never from a submitted user ID. The normal student HTML queries still include `student_id`; profile HTML updates still use the signed-in ID. Administrator HTML request review and announcement routes still require the admin role. The three API mode differences are confined to `app/lab_policy.py`; the vulnerable role update changes only the signed-in synthetic user's role through fixed SQL columns, so the next request immediately uses the new database role. The secure API profile update rejects fields outside its explicit allowlist before writing anything. SQL uses bound parameters for user-supplied values. Passwords are checked using Werkzeug and never stored in plaintext. Session cookies are HTTP-only with SameSite=Lax; local HTTP does not set the Secure cookie flag. Set a stable private secret key when persistence across restarts is needed. The published demo credentials and local-only binding mean this is an educational lab, not a production identity system.
 
-Run `python -m scripts.reset_db` before a scenario to restore Alice and Bob as students, request IDs 101 and 201 with their original statuses, and the two original announcements. Stage 4 will add the detailed Burp exercise and regression guide; Stage 5 will contain the complete project report.
+Run `python -m scripts.reset_db` before a scenario to restore Alice and Bob as students, request IDs 101 and 201 with their original statuses, and the two original announcements. The detailed manual procedure and before/after table are in `docs/LAB_GUIDE.md`. Stage 5 will contain the complete project report.
