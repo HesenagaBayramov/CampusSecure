@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Request {{ academic_request['id'] }} | CampusSecure{% endblock %}
+{% block topbar_label %}Request #{{ academic_request['id'] }}{% endblock %}
+{% block content %}
+{% from '_components.html' import status_badge %}
+<nav class="small-breadcrumb" aria-label="Breadcrumb"><a href="{{ url_for('student.requests_list') }}">Academic requests</a>{{ icon('chevron') }}<span aria-current="page">Request #{{ academic_request['id'] }}</span></nav>
+<div class="page-heading"><div><span class="eyebrow">REQUEST DETAILS</span><h1>{{ academic_request['request_type'] }}<span class="heading-period">.</span></h1><p>Request #{{ academic_request['id'] }}</p></div>{{ status_badge(academic_request['status']) }}</div>
+<div class="row g-4">
+  <div class="col-lg-8"><section class="surface-card detail-card" aria-labelledby="request-description-title"><span class="detail-icon">{{ icon('file') }}</span><h2 id="request-description-title">Request description</h2><p>{{ academic_request['details'] }}</p></section></div>
+  <div class="col-lg-4"><section class="surface-card detail-sidebar" aria-labelledby="request-info-title"><h2 id="request-info-title">Request information</h2><dl><div><dt>Request ID</dt><dd>#{{ academic_request['id'] }}</dd></div><div><dt>Type</dt><dd>{{ academic_request['request_type'] }}</dd></div><div><dt>Submitted</dt><dd><time datetime="{{ academic_request['submitted_on'] }}">{{ academic_request['submitted_on'] }}</time></dd></div><div><dt>Status</dt><dd>{{ status_badge(academic_request['status']) }}</dd></div></dl></section></div>
+</div>
+<a class="back-link" href="{{ url_for('student.requests_list') }}">← Back to all requests</a>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% from '_components.html' import status_badge %}
+{% block title %}Request {{ academic_request['id'] }} | CampusSecure{% endblock %}
+{% block topbar_label %}Request #{{ academic_request['id'] }}{% endblock %}
+{% block content %}
+<nav class="small-breadcrumb" aria-label="Breadcrumb">
+  <a href="{{ url_for('admin.requests_list') }}">Academic requests</a>{{ icon('chevron') }}<span aria-current="page">Request #{{ academic_request['id'] }}</span>
+</nav>
+<div class="page-heading">
+  <div><span class="eyebrow">REQUEST REVIEW</span><h1>{{ academic_request['request_type'] }}<span class="heading-period">.</span></h1><p>Submitted by {{ academic_request['student_name'] }} · Request #{{ academic_request['id'] }}</p></div>
+  {{ status_badge(academic_request['status']) }}
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-8">
+    <section class="surface-card detail-card" aria-labelledby="request-description-title">
+      <span class="detail-icon">{{ icon('file') }}</span>
+      <h2 id="request-description-title">Request description</h2>
+      <p>{{ academic_request['details'] }}</p>
+    </section>
+    <section class="surface-card review-panel" aria-labelledby="review-title">
+      <div class="form-card-heading"><span class="form-card-icon">{{ icon('check') }}</span><div><span class="eyebrow">ADMINISTRATOR ACTION</span><h2 id="review-title">Review request</h2></div></div>
+      {% if academic_request['status'] == 'pending' %}
+        <p>Choose a decision for this pending request. The student will see the updated status in their portal.</p>
+        <div class="review-actions">
+          <form method="post" action="{{ url_for('admin.update_request_status', request_id=academic_request['id']) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button class="btn btn-success" type="submit" name="decision" value="approve">{{ icon('check') }} Approve request</button>
+          </form>
+          <form method="post" action="{{ url_for('admin.update_request_status', request_id=academic_request['id']) }}" data-confirm="Reject this academic request?">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button class="btn btn-outline-danger" type="submit" name="decision" value="reject">{{ icon('info') }} Reject request</button>
+          </form>
+        </div>
+      {% else %}
+        <div class="review-status-note">{{ icon('info') }} This request has already been {{ academic_request['status'] }}. Only pending requests can be reviewed.</div>
+      {% endif %}
+    </section>
+  </div>
+  <div class="col-lg-4">
+    <section class="surface-card detail-sidebar" aria-labelledby="request-info-title">
+      <h2 id="request-info-title">Request information</h2>
+      <dl>
+        <div><dt>Student</dt><dd>{{ academic_request['student_name'] }}</dd></div>
+        <div><dt>Username</dt><dd>{{ academic_request['username'] }}</dd></div>
+        <div><dt>Request ID</dt><dd>#{{ academic_request['id'] }}</dd></div>
+        <div><dt>Title</dt><dd>{{ academic_request['request_type'] }}</dd></div>
+        <div><dt>Submitted</dt><dd><time datetime="{{ academic_request['submitted_on'] }}">{{ academic_request['submitted_on'] }}</time></dd></div>
+        <div><dt>Status</dt><dd>{{ status_badge(academic_request['status']) }}</dd></div>
+      </dl>
+    </section>
+  </div>
+</div>
+<a class="back-link" href="{{ url_for('admin.requests_list') }}">← Back to all requests</a>
+{% endblock %}

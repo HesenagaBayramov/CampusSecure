@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Profile | CampusSecure{% endblock %}
+{% block topbar_label %}My profile{% endblock %}
+{% block content %}
+<div class="page-heading"><div><span class="eyebrow">ACCOUNT DETAILS</span><h1>My profile<span class="heading-period">.</span></h1><p>Keep your personal contact information up to date.</p></div></div>
+<div class="row g-4">
+  <div class="col-lg-4">
+    <section class="surface-card profile-summary" aria-label="Student identity">
+      <span class="profile-avatar" aria-hidden="true">{{ profile['full_name'][0]|upper }}</span>
+      <h2>{{ profile['full_name'] }}</h2><p>{{ profile['department'] }}</p>
+      <span class="profile-id">Student ID CS-{{ '%04d'|format(current_user['id']) }}</span>
+      <div class="profile-summary-divider"></div>
+      <div class="profile-info-row">{{ icon('mail') }}<span>{{ profile['email'] }}</span></div>
+      <div class="profile-info-row">{{ icon('phone') }}<span>{{ profile['phone'] or 'No phone number added' }}</span></div>
+    </section>
+    <div class="profile-note">{{ icon('info') }}<p>Your department and account role are managed by the university and cannot be changed here.</p></div>
+  </div>
+  <div class="col-lg-8">
+    <section class="surface-card form-card" aria-labelledby="personal-details-title">
+      <div class="form-card-heading"><span class="form-card-icon">{{ icon('user') }}</span><div><span class="eyebrow">PERSONAL INFORMATION</span><h2 id="personal-details-title">Edit profile</h2></div></div>
+      <form method="post" action="{{ url_for('student.profile') }}" class="needs-validation" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <div class="row g-3">
+          <div class="col-12"><label class="form-label" for="full_name">Full name</label><input class="form-control" id="full_name" name="full_name" value="{{ request.form.get('full_name', profile['full_name']) }}" maxlength="100" required><div class="invalid-feedback">Enter your full name.</div></div>
+          <div class="col-md-6"><label class="form-label" for="email">Email address</label><input class="form-control" id="email" name="email" type="email" value="{{ request.form.get('email', profile['email']) }}" maxlength="254" required><div class="invalid-feedback">Enter a valid email address.</div></div>
+          <div class="col-md-6"><label class="form-label" for="phone">Phone number</label><input class="form-control" id="phone" name="phone" type="tel" value="{{ request.form.get('phone', profile['phone']) }}" maxlength="40" placeholder="Optional"></div>
+          <div class="col-12"><label class="form-label" for="department">Department</label><input class="form-control readonly-field" id="department" value="{{ profile['department'] }}" readonly aria-describedby="department-help"><div id="department-help" class="form-text">Contact your campus administrator if this is incorrect.</div></div>
+        </div>
+        <div class="form-actions"><span>Changes are saved to your student profile.</span><button class="btn btn-primary" type="submit">Save changes {{ icon('arrow') }}</button></div>
+      </form>
+    </section>
+  </div>
+</div>
+{% endblock %}

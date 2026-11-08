@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Academic requests | CampusSecure{% endblock %}
+{% block topbar_label %}Academic requests{% endblock %}
+{% block content %}
+{% from '_components.html' import status_badge %}
+<div class="page-heading"><div><span class="eyebrow">ACADEMIC SERVICES</span><h1>Academic requests<span class="heading-period">.</span></h1><p>Track the progress of your submitted requests.</p></div><span class="count-pill">{{ requests|length }} total</span></div>
+<section class="surface-card table-card" aria-labelledby="requests-heading">
+  <div class="table-card-header"><div><h2 id="requests-heading">All requests</h2><p>Review each request and open its full details.</p></div><div class="table-tools"><label class="visually-hidden" for="requestSearch">Search requests</label><div class="search-field">{{ icon('search') }}<input id="requestSearch" type="search" placeholder="Search requests" autocomplete="off"></div><label class="visually-hidden" for="statusFilter">Filter by status</label><select id="statusFilter" class="form-select"><option value="all">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></div></div>
+  <div class="table-responsive"><table class="table portal-table align-middle mb-0"><thead><tr><th scope="col">Request</th><th scope="col">Description</th><th scope="col">Submitted</th><th scope="col">Status</th><th scope="col"><span class="visually-hidden">Action</span></th></tr></thead><tbody>
+    {% for item in requests %}
+    <tr data-request-row data-search="{{ (item['request_type'] ~ ' ' ~ item['details'] ~ ' ' ~ item['id'])|lower }}" data-status="{{ item['status'] }}"><td><span class="table-title">{{ item['request_type'] }}</span><span class="table-subtitle">#{{ item['id'] }}</span></td><td class="table-description">{{ item['details'] }}</td><td><time datetime="{{ item['submitted_on'] }}">{{ item['submitted_on'] }}</time></td><td>{{ status_badge(item['status']) }}</td><td><a class="table-action" href="{{ url_for('student.request_detail', request_id=item['id']) }}" aria-label="View request {{ item['id'] }}">View {{ icon('arrow') }}</a></td></tr>
+    {% else %}<tr><td colspan="5"><div class="empty-state">{{ icon('file') }}<h3>No requests yet</h3><p>Your academic requests will appear here when available.</p></div></td></tr>{% endfor %}
+  </tbody></table></div>
+  {% if requests %}<div id="requestEmpty" class="empty-state" hidden>{{ icon('search') }}<h3>No matching requests</h3><p>Try a different search or status filter.</p></div>{% endif %}
+</section>
+{% endblock %}

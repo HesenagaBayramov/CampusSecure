@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block title %}{{ code }} {{ heading }} | CampusSecure{% endblock %}
+{% block topbar_label %}{{ code }} error{% endblock %}
+{% block content %}
+<div class="error-card surface-card"><span class="error-code">{{ code }}</span><span class="error-icon">{{ icon('info') }}</span><h1>{{ heading }}</h1><p>{{ message }}</p><a class="btn btn-primary" href="{{ url_for('index') }}">Return to portal {{ icon('arrow') }}</a></div>
+{% endblock %}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#14253d">
+  <title>{% block title %}CampusSecure{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/portal.css') }}">
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/portal.js') }}" defer></script>
+</head>
+{% macro icon(name, extra='') -%}
+  <svg class="icon {{ extra }}" aria-hidden="true" focusable="false"><use href="{{ url_for('static', filename='icons.svg') }}#{{ name }}"></use></svg>
+{%- endmacro %}
+{% macro nav_link(href, label, symbol, active=false) -%}
+  <a class="sidebar-link {{ 'active' if active else '' }}" href="{{ href }}" {% if active %}aria-current="page"{% endif %}>
+    {{ icon(symbol) }}<span>{{ label }}</span>
+  </a>
+{%- endmacro %}
+{% macro alerts() -%}
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert {{ 'alert-success' if category == 'success' else 'alert-danger' }} alert-dismissible fade show portal-alert" role="alert">
+      {{ icon('info') }}<span>{{ message }}</span>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Dismiss message"></button>
+    </div>
+  {% endfor %}
+{%- endmacro %}
+<body class="{{ 'portal-body' if current_user else 'login-body' }}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% if current_user %}
+    <aside class="offcanvas-lg offcanvas-start portal-sidebar" tabindex="-1" id="portalSidebar" aria-labelledby="sidebarTitle">
+      <div class="offcanvas-header d-lg-none">
+        <span id="sidebarTitle" class="fw-semibold">Navigation</span>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#portalSidebar" aria-label="Close navigation"></button>
+      </div>
+      <div class="sidebar-inner">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="CampusSecure home">
+          <span class="brand-mark">{{ icon('campus') }}</span>
+          <span><strong>CampusSecure</strong><small>UNIVERSITY PORTAL</small></span>
+        </a>
+        <div class="sidebar-section-label">WORKSPACE</div>
+        <nav class="sidebar-nav" aria-label="Primary navigation">
+          {% if current_user['role'] == 'student' %}
+            {{ nav_link(url_for('student.dashboard'), 'Dashboard', 'grid', request.endpoint == 'student.dashboard') }}
+            {{ nav_link(url_for('student.profile'), 'My profile', 'user', request.endpoint == 'student.profile') }}
+            {{ nav_link(url_for('student.requests_list'), 'Academic requests', 'file', request.endpoint in ('student.requests_list', 'student.request_detail')) }}
+            {{ nav_link(url_for('student.dashboard') ~ '#announcements', 'Announcements', 'bell') }}
+          {% else %}
+            {{ nav_link(url_for('admin.dashboard'), 'Overview', 'grid', request.endpoint == 'admin.dashboard') }}
+            {{ nav_link(url_for('admin.requests_list'), 'Academic requests', 'file', request.endpoint in ('admin.requests_list', 'admin.request_detail')) }}
+            {{ nav_link(url_for('admin.announcements'), 'Announcements', 'bell', request.endpoint in ('admin.announcements', 'admin.edit_announcement')) }}
+          {% endif %}
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-profile">
+            <span class="avatar avatar-sidebar" aria-hidden="true">{{ current_user['username'][0]|upper }}</span>
+            <span><strong>{{ current_user['username']|capitalize }}</strong><small>{{ 'Administrator' if current_user['role'] == 'admin' else 'Student account' }}</small></span>
+          </div>
+          <form method="post" action="{{ url_for('auth.logout') }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            <button class="sidebar-link sidebar-logout" type="submit">{{ icon('logout') }}<span>Sign out</span></button>
+          </form>
+        </div>
+      </div>
+    </aside>
+    <div class="portal-main">
+      <header class="topbar">
+        <button class="btn menu-button d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#portalSidebar" aria-controls="portalSidebar" aria-label="Open navigation">{{ icon('menu') }}</button>
+        <div class="topbar-breadcrumb"><span>CampusSecure</span><span class="breadcrumb-divider">/</span><strong>{% block topbar_label %}Dashboard{% endblock %}</strong></div>
+        <div class="topbar-account"><span class="role-chip">{{ 'Administrator' if current_user['role'] == 'admin' else 'Student' }}</span><span class="avatar avatar-top" aria-hidden="true">{{ current_user['username'][0]|upper }}</span></div>
+      </header>
+  {% endif %}
+  <main id="main-content" class="{{ 'portal-content' if current_user else 'login-main' }}">
+    {{ alerts() }}
+    {% block content %}{% endblock %}
+  </main>
+  {% if current_user %}
+      <footer class="portal-footer"><span>CampusSecure University Portal</span><span>Academic services · Campus life</span></footer>
+    </div>
+  {% endif %}
+</body>
+</html>

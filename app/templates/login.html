@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Sign in | CampusSecure{% endblock %}
+{% block content %}
+<div class="login-card">
+  <section class="login-showcase" aria-label="CampusSecure introduction">
+    <div class="login-brand"><span class="brand-mark">{{ icon('campus') }}</span><span><strong>CampusSecure</strong><small>UNIVERSITY PORTAL</small></span></div>
+    <div class="showcase-content">
+      <span class="eyebrow eyebrow-light">YOUR CAMPUS, CONNECTED</span>
+      <h1>Everything you need for your academic journey.</h1>
+      <p>Access your student profile, follow academic requests and stay current with campus announcements in one place.</p>
+      <div class="showcase-line"><span class="showcase-line-icon">{{ icon('book') }}</span><span>Academic services at your fingertips</span></div>
+    </div>
+    <div class="showcase-footer">A simpler way to stay connected to campus life.</div>
+  </section>
+  <section class="login-panel" aria-labelledby="login-title">
+    <div class="login-panel-top"><span class="secure-label">{{ icon('shield') }} Secure portal access</span></div>
+    <div class="login-form-wrap">
+      <span class="eyebrow">WELCOME BACK</span>
+      <h2 id="login-title">Sign in to your account</h2>
+      <p class="text-muted mb-4">Enter your university portal credentials to continue.</p>
+      <form method="post" action="{{ url_for('auth.login') }}" class="needs-validation" novalidate>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <div class="mb-3">
+          <label class="form-label" for="username">Username</label>
+          <input class="form-control form-control-lg" id="username" name="username" value="{{ request.form.get('username', '') }}" required autocomplete="username" autofocus placeholder="Your username">
+          <div class="invalid-feedback">Please enter your username.</div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-group password-group">
+            <input class="form-control form-control-lg" id="password" name="password" type="password" required autocomplete="current-password" placeholder="Your password">
+            <button class="btn btn-outline-secondary password-toggle" type="button" data-password-toggle="password" aria-label="Show password" aria-pressed="false">{{ icon('eye') }}</button>
+            <div class="invalid-feedback">Please enter your password.</div>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-lg w-100 login-submit" type="submit">Sign in {{ icon('arrow') }}</button>
+      </form>
+      <p class="login-help">Need help accessing your account? Contact your campus administrator.</p>
+    </div>
+    <div class="login-panel-footer">© CampusSecure · University Portal</div>
+  </section>
+</div>
+{% endblock %}
