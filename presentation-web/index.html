@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#081322">
+  <meta name="description" content="Offline CampusSecure university Information Security presentation">
+  <title>CampusSecure — Information Security Presentation</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5m6-6-6 6 6 6"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-compress" viewBox="0 0 24 24"><path d="M3 8h5V3m13 5h-5V3M3 16h5v5m13-5h-5v5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 8 3v6c0 5-3.2 8.8-8 11-4.8-2.2-8-6-8-11V5l8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-browser" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="M2.5 8.5h19M6 6.25h.01M9 6.25h.01"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="m6 8 3 3-3 3m5 0h6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M14 2v5h5M8 12h8M8 16h6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 8V3h5m8 0h5v5M3 16v5h5m8 0h5v-5M5 12h14"/></symbol>
+    <symbol id="i-compare" viewBox="0 0 24 24"><path d="M12 3v18M3 6h6m6 0h6M3 18h6m6 0h6M6 6v12m12-12v12"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 16v4h16v-4"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+  </svg>
+
+  <div class="stage" id="stage">
+    <div class="stage-glow" aria-hidden="true"></div>
+    <header class="stage-header">
+      <div class="brand" aria-label="CampusSecure">
+        <span class="brand-mark"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg></span>
+        <span class="brand-word">CAMPUS<span>SECURE</span></span>
+      </div>
+      <div class="header-meta"><span class="header-dot"></span> UNIVERSITY INFORMATION SECURITY PROJECT <span class="header-divider"></span> OFFLINE PRESENTATION</div>
+      <button class="icon-button fullscreen-button" id="fullscreen-button" type="button" aria-label="Enter full screen" title="Toggle full screen (F)"><svg class="icon" aria-hidden="true"><use href="#i-expand"></use></svg></button>
+    </header>
+
+    <main class="deck" id="deck" aria-label="CampusSecure presentation">
+      <section class="slide slide-intro is-active" data-slide="0" data-title="Introduction" aria-labelledby="slide-1-title">
+        <div class="slide-inner intro-grid">
+          <div class="intro-copy">
+            <p class="eyebrow reveal" style="--reveal-delay:.05s"><span class="eyebrow-line"></span> 01 / UNIVERSITY SECURITY LAB</p>
+            <h1 class="hero-title reveal" id="slide-1-title" style="--reveal-delay:.12s">Campus<span>Secure</span><em>.</em></h1>
+            <p class="hero-subtitle reveal" style="--reveal-delay:.2s">Manual Web Application Penetration Testing and Security Hardening Using <strong>Burp Suite</strong></p>
+            <p class="hero-description reveal" style="--reveal-delay:.28s">A fictional student portal designed to make server-side authorization visible, testable, and teachable.</p>
+            <div class="intro-principles reveal" style="--reveal-delay:.36s"><span><i></i> Three controlled scenarios</span><span><i></i> Synthetic records</span><span><i></i> Isolated laboratory</span></div>
+          </div>
+          <div class="intro-visual reveal" style="--reveal-delay:.18s" aria-hidden="true">
+            <div class="orbit orbit-outer"></div><div class="orbit orbit-mid"></div><div class="orbit orbit-inner"></div>
+            <div class="visual-core"><span class="core-number">03</span><span class="core-label">AUTHORIZATION<br>BOUNDARIES</span></div>
+            <div class="orbit-label orbit-label-a"><span>01</span> OBJECT</div>
+            <div class="orbit-label orbit-label-b"><span>02</span> FUNCTION</div>
+            <div class="orbit-label orbit-label-c"><span>03</span> FIELD</div>
+            <div class="visual-axis visual-axis-h"></div><div class="visual-axis visual-axis-v"></div>
+          </div>
+          <div class="intro-bottom reveal" style="--reveal-delay:.44s"><span>SECURE BY DEFAULT</span><span class="mini-rule"></span><span>ISOLATED BY DESIGN</span></div>
+        </div>
+      </section>
+
+      <section class="slide slide-overview" data-slide="1" data-title="Application overview" aria-labelledby="slide-2-title">
+        <div class="slide-inner">
+          <div class="slide-heading reveal"><p class="eyebrow"><span class="eyebrow-line"></span> 02 / APPLICATION OVERVIEW</p><h2 id="slide-2-title">Inside <span>CampusSecure</span></h2><p>One working portal. A deliberately narrow security laboratory.</p></div>
+          <div class="overview-main">
+            <div class="portal-window reveal" style="--reveal-delay:.12s" aria-label="Editable schematic of the student portal, not a screenshot">
+              <div class="portal-window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>portal.campussecure.local / student / dashboard</span><span class="schematic-label">INTERFACE SCHEMATIC</span></div>
+              <div class="portal-window-body"><div class="portal-side"><div class="portal-side-brand"><span class="tiny-shield">◇</span> CAMPUSSECURE</div><div class="portal-side-item active">▥ <span>Dashboard</span></div><div class="portal-side-item">◯ <span>My profile</span></div><div class="portal-side-item">▤ <span>Academic requests</span></div><div class="portal-side-item">◈ <span>Announcements</span></div><div class="portal-side-user"><span>AC</span> Alice Carter</div></div><div class="portal-pane"><div class="portal-pane-top"><span>Student dashboard</span><span class="student-chip">STUDENT</span></div><div class="portal-greeting">Welcome back, Alice<span>.</span></div><div class="portal-greeting-sub">Your academic journey at a glance.</div><div class="portal-metrics"><div><small>TOTAL REQUESTS</small><strong>01</strong></div><div><small>PENDING</small><strong>01</strong></div><div><small>ANNOUNCEMENTS</small><strong>02</strong></div></div><div class="portal-table-title">Recent requests <span>VIEW ALL →</span></div><div class="portal-table-line"><span>Transcript</span><span>#101</span><em>Pending</em></div><div class="portal-table-line muted-line"><span></span><span></span><span></span></div></div></div>
+            </div>
+            <p class="mobile-architecture">BROWSER <span>→</span> FLASK APPLICATION <span>→</span> SQLITE</p>
+            <div class="overview-right reveal" style="--reveal-delay:.2s"><div class="architecture-chain" aria-label="Browser to Flask application to SQLite architecture"><div class="chain-node"><span class="node-icon"><svg class="icon"><use href="#i-browser"></use></svg></span><span><b>BROWSER</b><small>Jinja2 interface + lab API</small></span></div><div class="chain-link"><span></span></div><div class="chain-node flask-node"><span class="node-icon"><svg class="icon"><use href="#i-server"></use></svg></span><span><b>FLASK APPLICATION</b><small>Auth · Student · Admin · API</small></span></div><div class="chain-link"><span></span></div><div class="chain-node"><span class="node-icon"><svg class="icon"><use href="#i-database"></use></svg></span><span><b>SQLITE</b><small>Users · Profiles · Requests · News</small></span></div></div><div class="overview-capabilities"><p>PORTAL CAPABILITIES</p><span>Authentication</span><span>Profile management</span><span>Academic requests</span><span>Announcements</span><span>Administrator review</span></div></div>
+          </div>
+          <div class="tech-strip reveal" style="--reveal-delay:.3s"><span>TECHNOLOGY STACK</span><b>Python 3</b><b>Flask</b><b>SQLite</b><b>HTML5 / CSS3</b><b>Bootstrap 5</b><b>Vanilla JavaScript</b></div>
+        </div>
+      </section>
+
+      <section class="slide slide-lab" data-slide="2" data-title="Laboratory architecture" aria-labelledby="slide-3-title">
+        <div class="slide-inner"><div class="slide-heading reveal"><p class="eyebrow"><span class="eyebrow-line"></span> 03 / LABORATORY ARCHITECTURE</p><h2 id="slide-3-title">The Isolated <span>Security Laboratory</span></h2><p>A controlled two-machine topology with no intended public route.</p></div>
+          <div class="lab-diagram reveal" style="--reveal-delay:.14s">
+            <div class="lab-node lab-node-kali"><div class="lab-node-top"><span class="machine-icon"><svg class="icon"><use href="#i-terminal"></use></svg></span><span class="machine-index">TESTING MACHINE / 01</span></div><h3>Kali Linux</h3><p>Burp Suite Proxy<br>+ Repeater</p><span class="node-foot">REQUEST ORIGIN</span></div>
+            <div class="lab-connection"><span class="connection-label">AUTHORIZED TRAFFIC ONLY</span><div class="connection-track"><span class="connection-pulse"></span></div><div class="host-only"><svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg><strong>HOST-ONLY</strong><small>ISOLATED VIRTUAL NETWORK</small></div><div class="connection-track"><span class="connection-pulse delay"></span></div></div>
+            <div class="lab-node lab-node-ubuntu"><div class="lab-node-top"><span class="machine-icon"><svg class="icon"><use href="#i-server"></use></svg></span><span class="machine-index">APPLICATION SERVER / 02</span></div><h3>Ubuntu Server <small>24.04 LTS</small></h3><p>Flask application<br>+ SQLite database</p><span class="node-foot">LOCAL TARGET</span></div>
+          </div>
+          <div class="lab-guardrails reveal" style="--reveal-delay:.26s"><div><span class="guardrail-symbol">01</span> Synthetic data only</div><div><span class="guardrail-symbol">02</span> Secure mode default</div><div><span class="guardrail-symbol">03</span> Explicit interface binding</div><div><span class="guardrail-symbol">04</span> Debug disabled</div></div>
+          <p class="evidence-note reveal" style="--reveal-delay:.32s"><span class="note-dot"></span> Planned topology. Ubuntu/Kali connectivity and Host-only isolation remain pending manual verification.</p>
+        </div>
+      </section>
+
+      <section class="slide slide-scenarios" data-slide="3" data-title="Security scenarios" aria-labelledby="slide-4-title">
+        <div class="slide-inner"><div class="slide-heading reveal"><p class="eyebrow"><span class="eyebrow-line"></span> 04 / SECURITY SCENARIOS</p><h2 id="slide-4-title">Three <span>Authorization Boundaries</span></h2><p>Select a scenario to inspect its cause, impact, and secure control.</p></div>
+          <div class="scenario-grid reveal" style="--reveal-delay:.12s" role="group" aria-label="Select an authorization scenario">
+            <button class="scenario-card is-selected" type="button" data-scenario="0" aria-pressed="true"><span class="scenario-card-top"><span class="scenario-index">01 / OBJECT</span><svg class="icon"><use href="#i-file"></use></svg></span><strong>Broken Object Level Authorization</strong><span class="scenario-code">GET /api/requests/201</span><span class="scenario-example">Alice changes request <b>101 → 201</b></span><span class="scenario-meta"><span><small>IMPACT</small> Bob's fictional data exposed</span><span><small>CONTROL</small> Verify request ownership</span></span></button>
+            <button class="scenario-card" type="button" data-scenario="1" aria-pressed="false"><span class="scenario-card-top"><span class="scenario-index">02 / FUNCTION</span><svg class="icon"><use href="#i-shield"></use></svg></span><strong>Broken Function Level Authorization</strong><span class="scenario-code">POST /api/admin/announcements</span><span class="scenario-example">Alice invokes an <b>admin action</b></span><span class="scenario-meta"><span><small>IMPACT</small> Unauthorized announcement</span><span><small>CONTROL</small> Enforce admin role</span></span></button>
+            <button class="scenario-card" type="button" data-scenario="2" aria-pressed="false"><span class="scenario-card-top"><span class="scenario-index">03 / FIELD</span><svg class="icon"><use href="#i-target"></use></svg></span><strong>Mass Assignment / Improper Field Authorization</strong><span class="scenario-code">POST /api/profile</span><span class="scenario-example">Alice submits <b>role=admin</b></span><span class="scenario-meta"><span><small>IMPACT</small> Synthetic role elevation</span><span><small>CONTROL</small> Allowlist profile fields</span></span></button>
+          </div>
+          <div class="scenario-detail reveal" style="--reveal-delay:.22s" aria-live="polite"><span class="detail-kicker" id="scenario-detail-kicker">SELECTED / 01</span><p id="scenario-detail-text">In Secure Mode the API compares Alice's user ID with the request row's student_id. The unrelated record returns 403.</p><span class="detail-status" id="scenario-detail-status">VULNERABLE 200 <i></i> SECURE 403</span></div>
+        </div>
+      </section>
+
+      <section class="slide slide-method" data-slide="4" data-title="Manual testing" aria-labelledby="slide-5-title">
+        <div class="slide-inner"><div class="slide-heading reveal"><p class="eyebrow"><span class="eyebrow-line"></span> 05 / MANUAL PENETRATION TESTING</p><h2 id="slide-5-title">From HTTP Requests to <span>Security Evidence</span></h2><p>Use Burp Suite to inspect one documented authorization decision at a time.</p></div>
+          <div class="workflow reveal" style="--reveal-delay:.1s" aria-label="Manual testing workflow"><div class="workflow-step"><span>01</span><svg class="icon"><use href="#i-scan"></use></svg><b>INTERCEPT</b><small>HTTP request</small></div><div class="workflow-arrow">→</div><div class="workflow-step"><span>02</span><svg class="icon"><use href="#i-file"></use></svg><b>INSPECT</b><small>Cookie + CSRF + body</small></div><div class="workflow-arrow">→</div><div class="workflow-step"><span>03</span><svg class="icon"><use href="#i-compare"></use></svg><b>COMPARE</b><small>Mode responses</small></div><div class="workflow-arrow">→</div><div class="workflow-step"><span>04</span><svg class="icon"><use href="#i-check"></use></svg><b>DOCUMENT</b><small>Finding + DB effect</small></div></div>
+          <div class="evidence-grid reveal" style="--reveal-delay:.2s">
+            <div class="evidence-slot" data-slot="vulnerable"><div class="slot-top"><span class="slot-title"><i class="slot-dot vulnerable-dot"></i> VULNERABLE MODE</span><span class="slot-code">EXPECTED 200 / 201</span></div><div class="capture-area"><img class="capture-image" alt="Locally selected, redacted Vulnerable Mode Burp screenshot"><div class="capture-placeholder"><svg class="icon"><use href="#i-upload"></use></svg><strong>Real Burp capture goes here</strong><span>Screenshot pending · no manual test claimed</span></div></div><div class="slot-bottom"><span class="slot-state">MANUAL EVIDENCE PENDING</span><button class="capture-button" type="button" data-capture-trigger="vulnerable">Insert local capture</button><button class="remove-capture" type="button" data-remove-capture="vulnerable" hidden aria-label="Remove Vulnerable Mode screenshot"><svg class="icon"><use href="#i-close"></use></svg></button><input class="capture-input" type="file" accept="image/png,image/jpeg,image/webp" data-capture-input="vulnerable" aria-label="Select redacted Vulnerable Mode screenshot"></div></div>
+            <div class="evidence-slot" data-slot="secure"><div class="slot-top"><span class="slot-title"><i class="slot-dot secure-dot"></i> SECURE MODE</span><span class="slot-code">EXPECTED 403</span></div><div class="capture-area"><img class="capture-image" alt="Locally selected, redacted Secure Mode Burp screenshot"><div class="capture-placeholder"><svg class="icon"><use href="#i-upload"></use></svg><strong>Real Burp capture goes here</strong><span>Screenshot pending · no manual test claimed</span></div></div><div class="slot-bottom"><span class="slot-state">MANUAL EVIDENCE PENDING</span><button class="capture-button" type="button" data-capture-trigger="secure">Insert local capture</button><button class="remove-capture" type="button" data-remove-capture="secure" hidden aria-label="Remove Secure Mode screenshot"><svg class="icon"><use href="#i-close"></use></svg></button><input class="capture-input" type="file" accept="image/png,image/jpeg,image/webp" data-capture-input="secure" aria-label="Select redacted Secure Mode screenshot"></div></div>
+          </div>
+          <p class="method-caption reveal" style="--reveal-delay:.3s"><span>AUTOMATED CONTRACTS VERIFIED</span> Status differences come from Flask test-client assertions. Burp screenshots and VM results still need to be collected.</p>
+        </div>
+      </section>
+
+      <section class="slide slide-hardening" data-slide="5" data-title="Security hardening" aria-labelledby="slide-6-title">
+        <div class="slide-inner"><div class="hardening-heading reveal"><div class="slide-heading"><p class="eyebrow"><span class="eyebrow-line"></span> 06 / SECURITY HARDENING</p><h2 id="slide-6-title">From Vulnerable <span>to Secure</span></h2><p>A policy comparison from automated project tests — not a live backend request.</p></div><div class="mode-toggle" role="group" aria-label="Illustrative policy mode"><button type="button" class="mode-option" data-mode="vulnerable" aria-pressed="false">VULNERABLE</button><button type="button" class="mode-option is-active" data-mode="secure" aria-pressed="true">SECURE</button></div></div>
+          <div class="policy-board reveal" style="--reveal-delay:.15s"><div class="policy-board-head"><span>REQUEST / SERVER-SIDE POLICY</span><span>ILLUSTRATIVE RESULT</span></div><div class="policy-row" data-policy="ownership"><span class="policy-icon"><svg class="icon"><use href="#i-file"></use></svg></span><span class="policy-text"><strong>Object ownership</strong><small>Alice → Bob's request #201</small></span><span class="policy-gate"><i></i><span>Owner checked</span></span><span class="policy-result secure-result">403 <small>FORBIDDEN</small></span></div><div class="policy-row" data-policy="role"><span class="policy-icon"><svg class="icon"><use href="#i-shield"></use></svg></span><span class="policy-text"><strong>Administrator role</strong><small>Alice → create announcement</small></span><span class="policy-gate"><i></i><span>Admin required</span></span><span class="policy-result secure-result">403 <small>FORBIDDEN</small></span></div><div class="policy-row" data-policy="fields"><span class="policy-icon"><svg class="icon"><use href="#i-target"></use></svg></span><span class="policy-text"><strong>Editable fields</strong><small>Alice → role=admin</small></span><span class="policy-gate"><i></i><span>Role rejected</span></span><span class="policy-result secure-result">403 <small>FORBIDDEN</small></span></div></div>
+          <div class="hardening-insight reveal" style="--reveal-delay:.25s"><span class="insight-icon"><svg class="icon"><use href="#i-lock"></use></svg></span><p id="mode-explanation" aria-live="polite"><strong>Secure Mode:</strong> server-loaded identity, role, and an explicit profile field allowlist determine the outcome before data is returned or changed.</p><span class="insight-label">NO LIVE API CALLS</span></div>
+        </div>
+      </section>
+
+      <section class="slide slide-results" data-slide="6" data-title="Results and conclusion" aria-labelledby="slide-7-title">
+        <div class="slide-inner"><div class="slide-heading reveal"><p class="eyebrow"><span class="eyebrow-line"></span> 07 / RESULTS & CONCLUSION</p><h2 id="slide-7-title">Security Is Enforced <span>on the Server</span></h2><p>Verified automated behavior. Honest boundaries on what remains untested.</p></div>
+          <div class="results-layout"><div class="results-stats reveal" style="--reveal-delay:.12s"><div class="big-stat"><strong data-count="44">44</strong><span>PYTEST TESTS PASSED</span><small>+ 2 subtests passed</small></div><div class="stat-divider"></div><div class="big-stat"><strong data-count="23">23</strong><span>UNITTEST TESTS PASSED</span><small>Original regression suite</small></div><div class="stat-divider"></div><div class="big-stat"><strong data-count="0">0</strong><span>UNRESOLVED FAILURES</span><small>Recorded successful runs</small></div></div><div class="results-right reveal" style="--reveal-delay:.2s"><div class="conclusion-seal"><div class="seal-ring"></div><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg><span>SERVER-SIDE<br>AUTHORIZATION</span></div><div class="pending-label"><i></i> MANUAL BURP + VM EVIDENCE PENDING</div></div></div>
+          <div class="results-bottom reveal" style="--reveal-delay:.3s"><p>Ownership checks. Role enforcement. Profile allowlists.</p><strong>Secure by default. Isolated by design.</strong><small>pytest collection includes existing unittest cases; these figures are not 67 independent tests.</small></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="stage-footer" aria-label="Presentation controls"><div class="footer-left"><button class="nav-button" id="previous-button" type="button" aria-label="Previous slide" title="Previous slide (Left arrow)"><svg class="icon"><use href="#i-arrow-left"></use></svg></button><span class="slide-count" id="slide-count" aria-live="polite">01 <span>/ 07</span></span><button class="nav-button" id="next-button" type="button" aria-label="Next slide" title="Next slide (Right arrow or Space)"><svg class="icon"><use href="#i-arrow-right"></use></svg></button></div><nav class="slide-overview" id="slide-overview" aria-label="Jump to a slide"><button type="button" data-go-to="0" aria-label="Slide 1: Introduction" aria-current="step" title="Introduction"></button><button type="button" data-go-to="1" aria-label="Slide 2: Application overview" title="Application overview"></button><button type="button" data-go-to="2" aria-label="Slide 3: Laboratory architecture" title="Laboratory architecture"></button><button type="button" data-go-to="3" aria-label="Slide 4: Security scenarios" title="Security scenarios"></button><button type="button" data-go-to="4" aria-label="Slide 5: Manual testing" title="Manual testing"></button><button type="button" data-go-to="5" aria-label="Slide 6: Security hardening" title="Security hardening"></button><button type="button" data-go-to="6" aria-label="Slide 7: Results and conclusion" title="Results and conclusion"></button></nav><div class="footer-right"><span class="shortcut-hint">← → NAVIGATE <i></i> F FULL SCREEN</span><span class="footer-section" id="footer-section">INTRODUCTION</span></div><div class="progress-track" role="progressbar" id="progress" aria-label="Presentation progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1"><span id="progress-fill"></span></div></footer>
+  </div>
+  <noscript><p class="noscript-note">JavaScript is off. The seven slides remain readable in document order; enable JavaScript for full-screen navigation and interactive comparisons.</p></noscript>
+</body>
+</html>
