@@ -19,3 +19,7 @@ instance/
 # Editor and system files
 .vscode/
 .DS_Store
+
+
+.pytest_tmp/
+.pytest_cache/
