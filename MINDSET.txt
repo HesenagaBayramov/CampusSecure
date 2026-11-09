@@ -1,0 +1,37 @@
+CampusSecure — iş xülasəsi / MINDSET
+
+ƏSAS REPO
+- İşlək layihə: C:\Users\Asus\Desktop\CampusSecure
+- Bu söhbətin hazırkı C:\Users\Asus\Documents\ChatGPT\CompSecure qovluğu boş Git deposudur; CampusSecure kodu orada deyil.
+- Bu fayl sürətli başlanğıc xülasəsidir. Yeni tapşırıqda əvvəl bunu və `git status --short` nəticəsini oxu; sonra yalnız aidiyyəti faylları yoxla. Dəyişiklikdən və test nəticəsi barədə iddiadan əvvəl cari kodu yenə təsdiqlə.
+
+LAYİHƏNİN MÖVCUD VƏZİYYƏTİ (əvvəlki sənədlərdən)
+- Flask + SQLite universitet portalı; tələbə/admin panelləri, sessiya ilə giriş, profil, akademik sorğular və elanlar.
+- LAB_MODE=secure (standart) və LAB_MODE=vulnerable; üç məhdud tədris ssenarisi: GET /api/requests/<id> (IDOR), POST /api/admin/announcements (funksiya icazəsi), POST /api/profile (role sahəsinin icazəsi).
+- Sintetik hesablar: alice, bob, admin. Reset sonrası Alice-in sorğusu #101, Bob-un sorğusu #201. Əl ilə Burp və Ubuntu/Kali VM yoxlaması hələ sübut kimi tamamlanmayıb.
+- PROJECT_SPEC.md, README.md, docs/LAB_GUIDE.md, docs/SECURITY_REPORT.md, docs/PROJECT_ARCHITECTURE.md və docs/PRESENTATION_OUTLINE.md mövcuddur. Redaktə edilə bilən 7 slaydlıq PPTX də docs/presentation/ altındadır.
+- Sənədlərdə əvvəlki uğurlu avtomatlaşdırılmış nəticələr: 44 pytest testi + 2 subtest, 23 unittest testi, 0 həll olunmamış xəta. Test dəstləri üst-üstə düşür; bunları 67 müstəqil test kimi toplama.
+
+BU ÇATDA SON FAKTİKİ İŞ
+- presentation-web/ altında müstəqil, tam oflayn, 7 slaydlıq HTML/CSS/vanilla JS təqdimatı quruldu: index.html, style.css, script.js, README.md və assets/{images,icons,screenshots}/.
+- Təqdimatda klaviatura/toxunma naviqasiyası, slayd göstəricisi, progress, tam ekran, interaktiv ssenari kartları, Vulnerable/Secure izahlı müqayisəsi, Burp screenshot yerləri, reduced-motion və mobil uyğunlaşma var.
+- Təqdimat Flask API-lərinə sorğu göndərmir; məzmun illüstrativdir. Real Burp screenshotu və ya manual nəticə uydurulmayıb.
+- Yalnız presentation-web/ yaradıldı. Həmin işdə Flask kodu, təhlükəsizlik testləri və mövcud sənədlər dəyişdirilmədi.
+
+SON YOXLAMALAR (əvvəlki işdə həqiqətən icra edildi)
+- Headless Chrome-da bütün 7 slayd 1366x768 və 1920x1080 ölçülərində görüntüləndi; mobil 390x844 və 844x390 də yoxlandı. Səhifədə gözlənilməz scroll olmadı.
+- ArrowLeft/Right, Space, Home, End, sürətli ardıcıl düymələr, slayd nöqtələri, touch swipe, tam ekran, ssenari seçimi, rejim müqayisəsi, lokal PNG preview/silmə və offline reload yoxlandı.
+- Reduced-motion, `node --check presentation-web/script.js`, lokal asset/SVG istinadları və 7 slayd sayı yoxlandı.
+- Yuxarıdakı 44/23 Flask test nəticələri bu təqdimat işi zamanı yenidən icra edilmədi; onlar repo sənədlərindəki əvvəlki qeyd edilmiş nəticələrdir.
+
+QALAN MƏHDUDİYYƏTLƏR
+- Real Burp Suite testi, Ubuntu/Kali Host-only bağlantısı, screenshotlar, auditoriya proyektoru və digər brauzerlər ayrıca yoxlanmalıdır.
+- Növbəti tapşırıqda bütün kodu başdan oxuma. Əvvəl bu xülasə + Git vəziyyəti, sonra yalnız tələb olunan hissə; köhnəlmiş faktları cari repo ilə təsdiqlə.
+
+SON YENİLƏNMƏ — 2026-11-09, /understand
+- İstifadəçi `.ua/.understandignore` siyahısını olduğu kimi təsdiqlədi. Skanın öz generasiya fayllarını tutmaması üçün `.ua/` istisnası sonradan əlavə edildi.
+- `understand` bacarığı ilə CampusSecure üçün `.ua/knowledge-graph.json` yaradıldı: 50 analiz edilmiş fayl, 128 düyün, 284 əlaqə, 7 arxitektura qatı və 12 oxu addımı.
+- Qrafın deterministik yoxlamasında 0 kritik məsələ, 6 əlaqəsiz köməkçi fayl xəbərdarlığı çıxdı. `fingerprints.json` və `meta.json` saxlandı; gələcək dəyişikliklərdə incremental yenilənmə mümkündür.
+- Lokal interaktiv dashboard Vite ilə 127.0.0.1:5173 ünvanında başladıldı. Bu sessiya müvəqqətidir; növbəti dəfə prosesin hələ işlədiyini yoxla. Tokenli URL cari çatın nəticəsində verilib.
+- Hazır viewer paketi v2.9.8 üçün 404 verdi; dashboard yerli Vite ehtiyat yolu ilə işə salındı.
+- `.ua/` qrafın generasiya çıxışıdır; hansı faylların Git-də izlənildiyini `git status` ilə yoxla.
