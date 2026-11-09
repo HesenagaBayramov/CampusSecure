@@ -1,0 +1,4092 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "CampusSecure",
+    "languages": [
+      "css",
+      "html",
+      "javascript",
+      "markdown",
+      "pptx",
+      "python",
+      "txt",
+      "unknown"
+    ],
+    "frameworks": [
+      "Flask",
+      "pytest"
+    ],
+    "description": "CampusSecure is a fictional university student portal for an authorized, isolated information security laboratory. Its Flask and SQLite application demonstrates server-side ownership, role, and field authorization through controlled API scenarios.",
+    "analyzedAt": "2026-11-09T13:09:48.047Z",
+    "gitCommitHash": "c4ebeff4d805cbfc1f89c4db2bcb654882044a5b"
+  },
+  "nodes": [
+    {
+      "id": "file:app/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "app/__init__.py",
+      "summary": "Creates the Flask application, fixes the lab mode at startup, loads the signed-in user, checks POST CSRF tokens, registers blueprints, and formats HTML or JSON errors.",
+      "tags": [
+        "entry-point",
+        "application-factory",
+        "session",
+        "csrf",
+        "routing",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/__init__.py:create_app",
+      "type": "function",
+      "name": "create_app",
+      "filePath": "app/__init__.py",
+      "lineRange": [
+        11,
+        111
+      ],
+      "summary": "Constructs and configures the Flask app, installs database support and request guards, registers blueprints, and defines route-specific error responses.",
+      "tags": [
+        "application-factory",
+        "routing",
+        "csrf"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:run.py",
+      "type": "file",
+      "name": "run.py",
+      "filePath": "run.py",
+      "summary": "Starts the local Flask server on loopback by default and permits a private IPv4 bind only after validating an explicitly named interface.",
+      "tags": [
+        "entry-point",
+        "host-binding",
+        "network-validation",
+        "local-lab",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:run.py:interface_ipv4_addresses",
+      "type": "function",
+      "name": "interface_ipv4_addresses",
+      "filePath": "run.py",
+      "lineRange": [
+        12,
+        37
+      ],
+      "summary": "Queries Linux or Windows for IPv4 addresses assigned to the named network interface and rejects unsupported or failed lookups.",
+      "tags": [
+        "network-validation",
+        "platform-compatibility",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:run.py:selected_host",
+      "type": "function",
+      "name": "selected_host",
+      "filePath": "run.py",
+      "lineRange": [
+        40,
+        57
+      ],
+      "summary": "Returns loopback by default or validates the requested private IPv4 address against explicit environment settings and interface assignments.",
+      "tags": [
+        "host-binding",
+        "validation",
+        "configuration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/reset_db.py",
+      "type": "file",
+      "name": "reset_db.py",
+      "filePath": "scripts/reset_db.py",
+      "summary": "Command-line entry point that opens an application context and restores the original fictional SQLite fixture.",
+      "tags": [
+        "entry-point",
+        "database",
+        "fixture-reset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/seed_db.py",
+      "type": "file",
+      "name": "seed_db.py",
+      "filePath": "scripts/seed_db.py",
+      "summary": "Command-line entry point that opens an application context and inserts missing fictional SQLite fixture rows.",
+      "tags": [
+        "entry-point",
+        "database",
+        "fixture-seeding"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/test_app.py",
+      "type": "file",
+      "name": "test_app.py",
+      "filePath": "tests/test_app.py",
+      "summary": "Unittest suite covering seeded data, login, role and ownership boundaries, administrator workflows, CSRF, reset behavior, and HTML rendering.",
+      "tags": [
+        "test",
+        "integration",
+        "authorization",
+        "database",
+        "html"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:tests/test_app.py:CampusSecureTest",
+      "type": "class",
+      "name": "CampusSecureTest",
+      "filePath": "tests/test_app.py",
+      "lineRange": [
+        21,
+        321
+      ],
+      "summary": "Unittest fixture and integration cases for the portal's database, authentication, student and administrator workflows, CSRF, rendering, and reset paths.",
+      "tags": [
+        "test",
+        "integration",
+        "portal",
+        "security"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/test_lab_modes.py",
+      "type": "file",
+      "name": "test_lab_modes.py",
+      "filePath": "tests/test_lab_modes.py",
+      "summary": "Unittest comparisons of secure and vulnerable lab modes, their shared routes and schema, API authorization outcomes, reset behavior, and host binding.",
+      "tags": [
+        "test",
+        "lab-modes",
+        "authorization",
+        "api",
+        "network-validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:tests/test_lab_modes.py:LabModeTest",
+      "type": "class",
+      "name": "LabModeTest",
+      "filePath": "tests/test_lab_modes.py",
+      "lineRange": [
+        13,
+        238
+      ],
+      "summary": "Unittest fixture and comparison cases for secure and vulnerable API behavior, shared schema and routes, and explicit host binding.",
+      "tags": [
+        "test",
+        "lab-modes",
+        "authorization",
+        "network-validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/test_security.py",
+      "type": "file",
+      "name": "test_security.py",
+      "filePath": "tests/test_security.py",
+      "summary": "Parametrized pytest regression suite using isolated SQLite databases to check authentication, authorization, CSRF, fixture reset, portal pages, and lab-mode behavior.",
+      "tags": [
+        "test",
+        "security",
+        "integration",
+        "lab-modes",
+        "database"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:tests/test_security.py:lab",
+      "type": "function",
+      "name": "lab",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        14,
+        24
+      ],
+      "summary": "Creates a parametrized secure or vulnerable Flask test app backed by a fresh temporary SQLite database.",
+      "tags": [
+        "test",
+        "fixture",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:csrf",
+      "type": "function",
+      "name": "csrf",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        27,
+        29
+      ],
+      "summary": "Reads the current CSRF token from a test client's session.",
+      "tags": [
+        "test",
+        "fixture",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        32,
+        40
+      ],
+      "summary": "Logs a test client in and loads the redirected page to obtain its new session token.",
+      "tags": [
+        "test",
+        "fixture",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:api_post",
+      "type": "function",
+      "name": "api_post",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        43,
+        44
+      ],
+      "summary": "Sends an API JSON POST with the current session CSRF token.",
+      "tags": [
+        "test",
+        "fixture",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:db_one",
+      "type": "function",
+      "name": "db_one",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        47,
+        50
+      ],
+      "summary": "Runs a query inside an app context and returns one SQLite row as a tuple.",
+      "tags": [
+        "test",
+        "fixture",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_authentication_and_logout",
+      "type": "function",
+      "name": "test_authentication_and_logout",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        53,
+        65
+      ],
+      "summary": "Checks failed and successful login, role-based redirect, logout, and access after session clearing.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_anonymous_and_wrong_role_access",
+      "type": "function",
+      "name": "test_anonymous_and_wrong_role_access",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        68,
+        82
+      ],
+      "summary": "Checks anonymous route denial and prevents a student from using administrator HTML and API actions.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_object_authorization_and_unknown_id",
+      "type": "function",
+      "name": "test_object_authorization_and_unknown_id",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        85,
+        104
+      ],
+      "summary": "Compares request ownership rules across lab modes and checks unknown IDs and HTML ownership protection.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_announcement_authorization_and_persistence",
+      "type": "function",
+      "name": "test_announcement_authorization_and_persistence",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        107,
+        132
+      ],
+      "summary": "Verifies administrator announcement creation and mode-dependent student creation with database effects.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_profile_field_authorization_and_role_refresh",
+      "type": "function",
+      "name": "test_profile_field_authorization_and_role_refresh",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        135,
+        156
+      ],
+      "summary": "Checks profile field updates, role escalation behavior in each mode, and role refresh on later requests.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_secure_profile_rejects_mixed_fields_without_partial_write",
+      "type": "function",
+      "name": "test_secure_profile_rejects_mixed_fields_without_partial_write",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        159,
+        172
+      ],
+      "summary": "Ensures a secure profile update containing a forbidden role field rejects the entire write.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_csrf_and_input_validation_keep_database_unchanged",
+      "type": "function",
+      "name": "test_csrf_and_input_validation_keep_database_unchanged",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        175,
+        182
+      ],
+      "summary": "Checks that missing CSRF tokens and invalid profile input leave persisted data unchanged.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_reset_restores_every_fixture_and_is_repeatable",
+      "type": "function",
+      "name": "test_reset_restores_every_fixture_and_is_repeatable",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        185,
+        210
+      ],
+      "summary": "Mutates fixtures, runs reset twice, and checks original users, requests, announcements, and password hashes.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_page_rendering_and_local_assets",
+      "type": "function",
+      "name": "test_page_rendering_and_local_assets",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        213,
+        238
+      ],
+      "summary": "Checks student and administrator page rendering, role-specific navigation, and local static asset responses.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_admin_review_survives_lab_modes",
+      "type": "function",
+      "name": "test_admin_review_survives_lab_modes",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        241,
+        251
+      ],
+      "summary": "Checks that administrator request approval and CSRF enforcement work in both lab modes.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_default_mode_and_environment_selection",
+      "type": "function",
+      "name": "test_default_mode_and_environment_selection",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        254,
+        271
+      ],
+      "summary": "Checks secure default mode, environment mode selection at app creation, and restart requirements.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/test_security.py:test_unsupported_mode_fails_closed",
+      "type": "function",
+      "name": "test_unsupported_mode_fails_closed",
+      "filePath": "tests/test_security.py",
+      "lineRange": [
+        274,
+        277
+      ],
+      "summary": "Checks that app creation rejects unsupported lab mode values.",
+      "tags": [
+        "test",
+        "security",
+        "regression"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/admin.py",
+      "type": "file",
+      "name": "admin.py",
+      "filePath": "app/admin.py",
+      "summary": "Defines administrator HTML routes for dashboard summaries, academic request review, and announcement creation, editing, and deletion.",
+      "tags": [
+        "api-handler",
+        "admin",
+        "request-review",
+        "announcements",
+        "authorization",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/admin.py:dashboard",
+      "type": "function",
+      "name": "dashboard",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        15,
+        37
+      ],
+      "summary": "Queries student, request, and announcement summaries for the administrator dashboard.",
+      "tags": [
+        "dashboard",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:requests_list",
+      "type": "function",
+      "name": "requests_list",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        42,
+        51
+      ],
+      "summary": "Lists all academic requests with student names for administrator review.",
+      "tags": [
+        "requests",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:request_detail",
+      "type": "function",
+      "name": "request_detail",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        56,
+        67
+      ],
+      "summary": "Loads a request and student identity for administrator review, returning 404 for an unknown ID.",
+      "tags": [
+        "requests",
+        "html-route",
+        "authorization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:update_request_status",
+      "type": "function",
+      "name": "update_request_status",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        72,
+        94
+      ],
+      "summary": "Validates an administrator decision and conditionally changes a pending request to approved or rejected without overwriting a prior review.",
+      "tags": [
+        "request-review",
+        "validation",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:valid_announcement_form",
+      "type": "function",
+      "name": "valid_announcement_form",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        97,
+        103
+      ],
+      "summary": "Trims and validates announcement title and body length, returning values for storage or flashing an error.",
+      "tags": [
+        "announcements",
+        "validation",
+        "form"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:announcements",
+      "type": "function",
+      "name": "announcements",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        108,
+        123
+      ],
+      "summary": "Lists announcements and handles administrator creation after form validation.",
+      "tags": [
+        "announcements",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:edit_announcement",
+      "type": "function",
+      "name": "edit_announcement",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        128,
+        144
+      ],
+      "summary": "Loads an announcement and handles validated administrator edits to its title and body.",
+      "tags": [
+        "announcements",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/admin.py:delete_announcement",
+      "type": "function",
+      "name": "delete_announcement",
+      "filePath": "app/admin.py",
+      "lineRange": [
+        149,
+        156
+      ],
+      "summary": "Deletes an announcement by ID or returns 404 when it does not exist.",
+      "tags": [
+        "announcements",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "app/auth.py",
+      "summary": "Provides session login and logout routes plus a decorator that enforces authentication and optional role checks on HTML views.",
+      "tags": [
+        "authentication",
+        "session",
+        "authorization",
+        "decorator",
+        "tested"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/auth.py:login_required",
+      "type": "function",
+      "name": "login_required",
+      "filePath": "app/auth.py",
+      "lineRange": [
+        13,
+        25
+      ],
+      "summary": "Builds a view decorator that redirects anonymous users and rejects signed-in users lacking the requested role.",
+      "tags": [
+        "authentication",
+        "authorization",
+        "decorator"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/auth.py:login",
+      "type": "function",
+      "name": "login",
+      "filePath": "app/auth.py",
+      "lineRange": [
+        29,
+        43
+      ],
+      "summary": "Checks submitted credentials against stored hashes, refreshes the session, and redirects the user to the dashboard for their role.",
+      "tags": [
+        "authentication",
+        "session",
+        "html-route"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/auth.py:logout",
+      "type": "function",
+      "name": "logout",
+      "filePath": "app/auth.py",
+      "lineRange": [
+        48,
+        50
+      ],
+      "summary": "Clears the signed-in session and redirects to login.",
+      "tags": [
+        "authentication",
+        "session",
+        "html-route"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/db.py",
+      "type": "file",
+      "name": "db.py",
+      "filePath": "app/db.py",
+      "summary": "Owns the SQLite schema, request-scoped connection, application teardown, repeatable fictional fixtures, reset operation, and Flask CLI commands.",
+      "tags": [
+        "database",
+        "schema-definition",
+        "fixture-seeding",
+        "flask-cli",
+        "sqlite",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/db.py:get_db",
+      "type": "function",
+      "name": "get_db",
+      "filePath": "app/db.py",
+      "lineRange": [
+        42,
+        48
+      ],
+      "summary": "Returns a request-scoped SQLite connection with row access and foreign-key enforcement.",
+      "tags": [
+        "database",
+        "connection",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:close_db",
+      "type": "function",
+      "name": "close_db",
+      "filePath": "app/db.py",
+      "lineRange": [
+        51,
+        54
+      ],
+      "summary": "Closes and removes the SQLite connection at application-context teardown.",
+      "tags": [
+        "database",
+        "cleanup",
+        "lifecycle"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:init_db",
+      "type": "function",
+      "name": "init_db",
+      "filePath": "app/db.py",
+      "lineRange": [
+        57,
+        59
+      ],
+      "summary": "Creates the four SQLite tables from the embedded schema and commits the transaction.",
+      "tags": [
+        "database",
+        "schema-definition",
+        "initialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:seed_db",
+      "type": "function",
+      "name": "seed_db",
+      "filePath": "app/db.py",
+      "lineRange": [
+        62,
+        104
+      ],
+      "summary": "Inserts missing fictional users, profiles, academic requests, and announcements without overwriting existing rows.",
+      "tags": [
+        "database",
+        "fixture-seeding",
+        "idempotent"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/db.py:reset_db",
+      "type": "function",
+      "name": "reset_db",
+      "filePath": "app/db.py",
+      "lineRange": [
+        107,
+        114
+      ],
+      "summary": "Deletes demo rows in foreign-key-safe order and reseeds original accounts, credentials, and request statuses.",
+      "tags": [
+        "database",
+        "fixture-reset",
+        "transaction"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:seed_db_command",
+      "type": "function",
+      "name": "seed_db_command",
+      "filePath": "app/db.py",
+      "lineRange": [
+        118,
+        120
+      ],
+      "summary": "Exposes fixture seeding as the Flask seed-db CLI command.",
+      "tags": [
+        "flask-cli",
+        "fixture-seeding",
+        "command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:reset_db_command",
+      "type": "function",
+      "name": "reset_db_command",
+      "filePath": "app/db.py",
+      "lineRange": [
+        124,
+        126
+      ],
+      "summary": "Exposes fixture restoration as the Flask reset-db CLI command.",
+      "tags": [
+        "flask-cli",
+        "fixture-reset",
+        "command"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/db.py:init_app",
+      "type": "function",
+      "name": "init_app",
+      "filePath": "app/db.py",
+      "lineRange": [
+        129,
+        132
+      ],
+      "summary": "Registers SQLite teardown and the seed-db and reset-db commands with the Flask application.",
+      "tags": [
+        "application-setup",
+        "database",
+        "flask-cli"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/student.py",
+      "type": "file",
+      "name": "student.py",
+      "filePath": "app/student.py",
+      "summary": "Defines student-only HTML routes for dashboard summaries, contact profile edits, and request lists and details filtered by the signed-in user.",
+      "tags": [
+        "api-handler",
+        "student",
+        "profile",
+        "request-ownership",
+        "tested"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/student.py:dashboard",
+      "type": "function",
+      "name": "dashboard",
+      "filePath": "app/student.py",
+      "lineRange": [
+        13,
+        41
+      ],
+      "summary": "Queries the signed-in student's profile, request counts, recent requests, and announcements for their dashboard.",
+      "tags": [
+        "dashboard",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/student.py:profile",
+      "type": "function",
+      "name": "profile",
+      "filePath": "app/student.py",
+      "lineRange": [
+        46,
+        66
+      ],
+      "summary": "Displays or updates only the signed-in student's permitted contact fields.",
+      "tags": [
+        "profile",
+        "html-route",
+        "authorization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/student.py:requests_list",
+      "type": "function",
+      "name": "requests_list",
+      "filePath": "app/student.py",
+      "lineRange": [
+        71,
+        76
+      ],
+      "summary": "Lists only academic requests owned by the signed-in student.",
+      "tags": [
+        "requests",
+        "html-route",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/student.py:request_detail",
+      "type": "function",
+      "name": "request_detail",
+      "filePath": "app/student.py",
+      "lineRange": [
+        81,
+        88
+      ],
+      "summary": "Loads a request only when its student ID matches the signed-in user, otherwise returns 404.",
+      "tags": [
+        "requests",
+        "html-route",
+        "authorization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:PROJECT_SPEC.md",
+      "type": "document",
+      "name": "PROJECT_SPEC.md",
+      "filePath": "PROJECT_SPEC.md",
+      "summary": "Project specification covering scope, staged delivery, Flask and SQLite architecture, table and HTTP contracts, and security boundaries for the lab.",
+      "tags": [
+        "documentation",
+        "specification",
+        "architecture",
+        "api-contracts",
+        "security"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project guide covering local setup, fictional accounts, secure and vulnerable lab modes, network binding, API comparisons, tests, troubleshooting, and presentation artifacts.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "setup",
+        "security-lab",
+        "testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:requirements-dev.txt",
+      "type": "document",
+      "name": "requirements-dev.txt",
+      "filePath": "requirements-dev.txt",
+      "summary": "Development dependency list that includes the runtime requirements and adds pytest for regression checks.",
+      "tags": [
+        "documentation",
+        "dependencies",
+        "testing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:requirements-presentation.txt",
+      "type": "document",
+      "name": "requirements-presentation.txt",
+      "filePath": "requirements-presentation.txt",
+      "summary": "Dependency list for regenerating the editable PowerPoint presentation with python-pptx.",
+      "tags": [
+        "documentation",
+        "dependencies",
+        "presentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "requirements.txt",
+      "summary": "Runtime dependency list constraining Flask to major version 3.",
+      "tags": [
+        "documentation",
+        "dependencies",
+        "flask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/templates/_components.html",
+      "type": "file",
+      "name": "_components.html",
+      "filePath": "app/templates/_components.html",
+      "summary": "Defines the reusable Jinja status badge macro, mapping known request states to CSS classes and displaying a capitalized label.",
+      "tags": [
+        "component",
+        "status-display",
+        "jinja-template"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/templates/base.html",
+      "type": "file",
+      "name": "base.html",
+      "filePath": "app/templates/base.html",
+      "summary": "Provides the shared page shell, assets, icon and navigation macros, flash alerts, role-specific sidebar, and content blocks for authenticated and login pages.",
+      "tags": [
+        "layout",
+        "navigation",
+        "authentication",
+        "jinja-template"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/login.html",
+      "type": "file",
+      "name": "login.html",
+      "filePath": "app/templates/login.html",
+      "summary": "Renders the portal sign-in page with a CSRF-protected credential form, browser validation messages, and password visibility control.",
+      "tags": [
+        "authentication",
+        "form",
+        "csrf",
+        "jinja-template"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/admin/announcements.html",
+      "type": "file",
+      "name": "announcements.html",
+      "filePath": "app/templates/admin/announcements.html",
+      "summary": "Lets administrators publish announcements and browse, edit, or delete existing notices through CSRF-protected forms.",
+      "tags": [
+        "admin",
+        "announcements",
+        "form",
+        "csrf"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/admin/dashboard.html",
+      "type": "file",
+      "name": "dashboard.html",
+      "filePath": "app/templates/admin/dashboard.html",
+      "summary": "Summarizes student accounts, requests, and announcements for administrators, with recent activity tables and links to management pages.",
+      "tags": [
+        "admin",
+        "dashboard",
+        "overview",
+        "jinja-template"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/admin/edit_announcement.html",
+      "type": "file",
+      "name": "edit_announcement.html",
+      "filePath": "app/templates/admin/edit_announcement.html",
+      "summary": "Displays an administrator form for changing an announcement title and message while retaining submitted values and a CSRF token.",
+      "tags": [
+        "admin",
+        "announcements",
+        "form",
+        "csrf"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/admin/request_detail.html",
+      "type": "file",
+      "name": "request_detail.html",
+      "filePath": "app/templates/admin/request_detail.html",
+      "summary": "Shows an academic request and student details, with CSRF-protected approve and reject actions only while the request is pending.",
+      "tags": [
+        "admin",
+        "request-review",
+        "authorization",
+        "csrf"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/admin/requests.html",
+      "type": "file",
+      "name": "requests.html",
+      "filePath": "app/templates/admin/requests.html",
+      "summary": "Lists all student requests in an administrator table with search and status filter controls and links to individual reviews.",
+      "tags": [
+        "admin",
+        "requests",
+        "search",
+        "filtering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/student/dashboard.html",
+      "type": "file",
+      "name": "dashboard.html",
+      "filePath": "app/templates/student/dashboard.html",
+      "summary": "Shows a student profile summary, request counts, recent request statuses, and the latest campus announcements.",
+      "tags": [
+        "student",
+        "dashboard",
+        "requests",
+        "announcements"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/student/profile.html",
+      "type": "file",
+      "name": "profile.html",
+      "filePath": "app/templates/student/profile.html",
+      "summary": "Displays student identity and contact information alongside a CSRF-protected form for editing allowed profile fields; department remains read-only.",
+      "tags": [
+        "student",
+        "profile",
+        "form",
+        "csrf"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/student/request_detail.html",
+      "type": "file",
+      "name": "request_detail.html",
+      "filePath": "app/templates/student/request_detail.html",
+      "summary": "Presents a student-facing academic request with its description, submission date, and current status.",
+      "tags": [
+        "student",
+        "request-detail",
+        "status-display"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/templates/student/requests.html",
+      "type": "file",
+      "name": "requests.html",
+      "filePath": "app/templates/student/requests.html",
+      "summary": "Lists student academic requests with search and status filters and links to each request detail page.",
+      "tags": [
+        "student",
+        "requests",
+        "search",
+        "filtering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/LAB_GUIDE.md",
+      "type": "document",
+      "name": "LAB_GUIDE.md",
+      "filePath": "docs/LAB_GUIDE.md",
+      "summary": "Guides an isolated Ubuntu and Kali manual lab, including host-only networking, Burp setup, three authorization requests, expected mode comparisons, troubleshooting, and shutdown.",
+      "tags": [
+        "documentation",
+        "security-lab",
+        "manual-testing",
+        "authorization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/PRESENTATION_OUTLINE.md",
+      "type": "document",
+      "name": "PRESENTATION_OUTLINE.md",
+      "filePath": "docs/PRESENTATION_OUTLINE.md",
+      "summary": "Plans a seven-slide university presentation covering the portal architecture, lab setup, three authorization scenarios, Burp demonstrations, remediation, and results.",
+      "tags": [
+        "documentation",
+        "presentation",
+        "security-lab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/PROJECT_ARCHITECTURE.md",
+      "type": "document",
+      "name": "PROJECT_ARCHITECTURE.md",
+      "filePath": "docs/PROJECT_ARCHITECTURE.md",
+      "summary": "Maps Flask blueprints, SQLite tables, authentication and authorization flows, API endpoints, templates, and the isolated deployment boundary.",
+      "tags": [
+        "documentation",
+        "architecture",
+        "flask",
+        "authorization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/SECURITY_REPORT.md",
+      "type": "document",
+      "name": "SECURITY_REPORT.md",
+      "filePath": "docs/SECURITY_REPORT.md",
+      "summary": "Assesses three controlled authorization failures, their secure-mode controls, before-and-after results, risk, automated verification, and pending manual evidence.",
+      "tags": [
+        "documentation",
+        "security-report",
+        "authorization",
+        "risk-assessment"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:presentation-web/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "presentation-web/README.md",
+      "summary": "Explains how to present the offline seven-slide web deck, use keyboard and touch controls, replace Burp screenshot placeholders, and customize content.",
+      "tags": [
+        "documentation",
+        "presentation",
+        "offline",
+        "user-guide"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:presentation-web/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "presentation-web/index.html",
+      "summary": "Defines the offline seven-slide CampusSecure presentation, accessible controls, inline SVG icons, scenario comparisons, and screenshot slots.",
+      "tags": [
+        "presentation",
+        "html",
+        "accessibility",
+        "security-lab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:presentation-web/style.css",
+      "type": "file",
+      "name": "style.css",
+      "filePath": "presentation-web/style.css",
+      "summary": "Styles the dark, responsive 16:9 presentation stage, slide transitions, diagrams, cards, controls, and narrow-screen adaptations.",
+      "tags": [
+        "presentation",
+        "stylesheet",
+        "responsive-design",
+        "animation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/api.py",
+      "type": "file",
+      "name": "api.py",
+      "filePath": "app/api.py",
+      "summary": "Implements three JSON lab endpoints for request reads, announcement creation, and profile updates, with input validation and mode-dependent authorization decisions.",
+      "tags": [
+        "api-handler",
+        "authorization",
+        "validation",
+        "flask"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/api.py:error_response",
+      "type": "function",
+      "name": "error_response",
+      "filePath": "app/api.py",
+      "lineRange": [
+        13,
+        14
+      ],
+      "summary": "Builds a consistent JSON error body and HTTP status tuple.",
+      "tags": [
+        "api-handler",
+        "error-handling",
+        "serialization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/api.py:require_session",
+      "type": "function",
+      "name": "require_session",
+      "filePath": "app/api.py",
+      "lineRange": [
+        18,
+        20
+      ],
+      "summary": "Rejects unauthenticated requests before any API route executes.",
+      "tags": [
+        "authentication",
+        "api-handler",
+        "middleware"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/api.py:payload",
+      "type": "function",
+      "name": "payload",
+      "filePath": "app/api.py",
+      "lineRange": [
+        23,
+        32
+      ],
+      "summary": "Accepts an object from JSON or flat form data for Burp-friendly API requests.",
+      "tags": [
+        "validation",
+        "parsing",
+        "api-handler"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/api.py:request_record",
+      "type": "function",
+      "name": "request_record",
+      "filePath": "app/api.py",
+      "lineRange": [
+        36,
+        47
+      ],
+      "summary": "Reads one academic request and applies the selected ownership policy before returning its fields.",
+      "tags": [
+        "api-handler",
+        "authorization",
+        "data-access"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/api.py:create_announcement",
+      "type": "function",
+      "name": "create_announcement",
+      "filePath": "app/api.py",
+      "lineRange": [
+        51,
+        74
+      ],
+      "summary": "Checks the announcement permission, validates title and body, and inserts a dated announcement attributed to the signed-in user.",
+      "tags": [
+        "api-handler",
+        "authorization",
+        "validation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:app/api.py:update_profile",
+      "type": "function",
+      "name": "update_profile",
+      "filePath": "app/api.py",
+      "lineRange": [
+        78,
+        122
+      ],
+      "summary": "Validates editable profile fields and optional lab-mode role change before updating profile and user rows in one transaction.",
+      "tags": [
+        "api-handler",
+        "authorization",
+        "validation",
+        "transaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:app/lab_policy.py",
+      "type": "file",
+      "name": "lab_policy.py",
+      "filePath": "app/lab_policy.py",
+      "summary": "Centralizes the three API authorization decisions that switch between secure and vulnerable lab modes captured at app startup.",
+      "tags": [
+        "authorization",
+        "policy",
+        "security-lab"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/lab_policy.py:mode",
+      "type": "function",
+      "name": "mode",
+      "filePath": "app/lab_policy.py",
+      "lineRange": [
+        10,
+        13
+      ],
+      "summary": "Reads the lab mode stored in the Flask app when it was created.",
+      "tags": [
+        "policy",
+        "configuration",
+        "flask"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/lab_policy.py:may_read_student_request",
+      "type": "function",
+      "name": "may_read_student_request",
+      "filePath": "app/lab_policy.py",
+      "lineRange": [
+        16,
+        17
+      ],
+      "summary": "Allows a student request read when the user owns it or vulnerable mode is active.",
+      "tags": [
+        "policy",
+        "authorization",
+        "object-access"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/lab_policy.py:may_create_announcement",
+      "type": "function",
+      "name": "may_create_announcement",
+      "filePath": "app/lab_policy.py",
+      "lineRange": [
+        20,
+        21
+      ],
+      "summary": "Allows announcement creation for administrators, plus students in vulnerable mode.",
+      "tags": [
+        "policy",
+        "authorization",
+        "function-access"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:app/lab_policy.py:may_assign_own_role",
+      "type": "function",
+      "name": "may_assign_own_role",
+      "filePath": "app/lab_policy.py",
+      "lineRange": [
+        24,
+        25
+      ],
+      "summary": "Allows self-assignment of the role field only in vulnerable mode.",
+      "tags": [
+        "policy",
+        "authorization",
+        "field-access"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:app/static/css/portal.css",
+      "type": "file",
+      "name": "portal.css",
+      "filePath": "app/static/css/portal.css",
+      "summary": "Defines the student and administrator portal's colors, navigation shell, forms, cards, tables, responsive layouts, and accessibility states.",
+      "tags": [
+        "stylesheet",
+        "portal",
+        "responsive-design",
+        "accessibility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:app/static/js/portal.js",
+      "type": "file",
+      "name": "portal.js",
+      "filePath": "app/static/js/portal.js",
+      "summary": "Adds browser-side form validation, password visibility toggles, confirmation prompts, and request table filtering to the portal.",
+      "tags": [
+        "event-handler",
+        "form-validation",
+        "portal",
+        "filtering"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:app/templates/errors/error.html",
+      "type": "file",
+      "name": "error.html",
+      "filePath": "app/templates/errors/error.html",
+      "summary": "Extends the shared portal layout to display an error code, heading, message, and return link.",
+      "tags": [
+        "template",
+        "error-page",
+        "portal"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:docs/presentation/CampusSecure_Presentation.pptx",
+      "type": "file",
+      "name": "CampusSecure_Presentation.pptx",
+      "filePath": "docs/presentation/CampusSecure_Presentation.pptx",
+      "summary": "Editable seven-slide PowerPoint deck presenting the CampusSecure lab architecture, controlled authorization scenarios, hardening, and results.",
+      "tags": [
+        "presentation",
+        "powerpoint",
+        "security-lab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:docs/presentation/SPEAKER_NOTES.md",
+      "type": "document",
+      "name": "SPEAKER_NOTES.md",
+      "filePath": "docs/presentation/SPEAKER_NOTES.md",
+      "summary": "Provides speaking notes for each of the seven PowerPoint slides, from project objectives through lab setup, scenarios, remediation, and conclusions.",
+      "tags": [
+        "documentation",
+        "presentation",
+        "speaker-notes"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:presentation-web/assets/icons/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "presentation-web/assets/icons/.gitkeep",
+      "summary": "Keeps the optional presentation icon asset directory in version control.",
+      "tags": [
+        "placeholder",
+        "presentation",
+        "asset-directory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:presentation-web/assets/images/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "presentation-web/assets/images/.gitkeep",
+      "summary": "Keeps the optional presentation image asset directory in version control.",
+      "tags": [
+        "placeholder",
+        "presentation",
+        "asset-directory"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:presentation-web/assets/screenshots/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "presentation-web/assets/screenshots/.gitkeep",
+      "summary": "Keeps the presentation screenshot asset directory available for later lab evidence.",
+      "tags": [
+        "placeholder",
+        "presentation",
+        "evidence"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:presentation-web/script.js",
+      "type": "file",
+      "name": "script.js",
+      "filePath": "presentation-web/script.js",
+      "summary": "Runs the offline web deck's slide navigation, keyboard and swipe controls, full-screen mode, result animation, scenario toggle, and local screenshot loading.",
+      "tags": [
+        "presentation",
+        "event-handler",
+        "navigation",
+        "interaction"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "scripts/__init__.py",
+      "summary": "Marks the command-line maintenance scripts directory as a Python package.",
+      "tags": [
+        "package",
+        "script",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/build_presentation.py",
+      "type": "file",
+      "name": "build_presentation.py",
+      "filePath": "scripts/build_presentation.py",
+      "summary": "Builds and validates an editable seven-slide PowerPoint presentation using reusable shape, text, layout, and scenario rendering helpers.",
+      "tags": [
+        "presentation",
+        "build-script",
+        "powerpoint",
+        "validation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:rgb",
+      "type": "function",
+      "name": "rgb",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        44,
+        45
+      ],
+      "summary": "Converts a hex color string to a PowerPoint RGBColor value.",
+      "tags": [
+        "presentation",
+        "color",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_box",
+      "type": "function",
+      "name": "add_box",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        48,
+        63
+      ],
+      "summary": "Adds a filled rectangle or rounded card shape with optional border and transparency.",
+      "tags": [
+        "presentation",
+        "shape",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_circle",
+      "type": "function",
+      "name": "add_circle",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        66,
+        75
+      ],
+      "summary": "Adds a filled circular shape with optional outline.",
+      "tags": [
+        "presentation",
+        "shape",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_line",
+      "type": "function",
+      "name": "add_line",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        78,
+        86
+      ],
+      "summary": "Adds a styled line between two slide coordinates.",
+      "tags": [
+        "presentation",
+        "shape",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_text",
+      "type": "function",
+      "name": "add_text",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        89,
+        112
+      ],
+      "summary": "Places editable text with font, color, alignment, and spacing options on a slide.",
+      "tags": [
+        "presentation",
+        "text",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_pill",
+      "type": "function",
+      "name": "add_pill",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        115,
+        119
+      ],
+      "summary": "Draws a compact label pill from a shape and styled text.",
+      "tags": [
+        "presentation",
+        "component",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_logo",
+      "type": "function",
+      "name": "add_logo",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        122,
+        127
+      ],
+      "summary": "Places the CampusSecure wordmark on a slide.",
+      "tags": [
+        "presentation",
+        "branding",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:add_footer",
+      "type": "function",
+      "name": "add_footer",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        130,
+        137
+      ],
+      "summary": "Adds the slide number and section label to the footer.",
+      "tags": [
+        "presentation",
+        "layout",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:new_slide",
+      "type": "function",
+      "name": "new_slide",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        140,
+        147
+      ],
+      "summary": "Creates a standard presentation slide with shared background, logo, and footer.",
+      "tags": [
+        "presentation",
+        "factory",
+        "layout"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:header",
+      "type": "function",
+      "name": "header",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        150,
+        157
+      ],
+      "summary": "Draws a slide's eyebrow, title, and optional subtitle.",
+      "tags": [
+        "presentation",
+        "layout",
+        "component"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_one",
+      "type": "function",
+      "name": "slide_one",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        160,
+        184
+      ],
+      "summary": "Builds the title and objectives slide with an editable concentric-shape security motif.",
+      "tags": [
+        "presentation",
+        "slide",
+        "introduction"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_two",
+      "type": "function",
+      "name": "slide_two",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        187,
+        224
+      ],
+      "summary": "Builds the application architecture slide with an editable component flow.",
+      "tags": [
+        "presentation",
+        "slide",
+        "architecture"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_three",
+      "type": "function",
+      "name": "slide_three",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        227,
+        261
+      ],
+      "summary": "Builds the isolated lab setup slide showing hosts, tools, and traffic flow.",
+      "tags": [
+        "presentation",
+        "slide",
+        "security-lab"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:scenario_card",
+      "type": "function",
+      "name": "scenario_card",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        264,
+        277
+      ],
+      "summary": "Draws a numbered authorization scenario card with endpoint and explanation.",
+      "tags": [
+        "presentation",
+        "component",
+        "authorization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_four",
+      "type": "function",
+      "name": "slide_four",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        280,
+        290
+      ],
+      "summary": "Builds a three-scenario slide for object, function, and field authorization.",
+      "tags": [
+        "presentation",
+        "slide",
+        "authorization"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:screenshot_placeholder",
+      "type": "function",
+      "name": "screenshot_placeholder",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        293,
+        312
+      ],
+      "summary": "Draws an editable capture frame for later Burp screenshot insertion.",
+      "tags": [
+        "presentation",
+        "component",
+        "evidence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_five",
+      "type": "function",
+      "name": "slide_five",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        315,
+        338
+      ],
+      "summary": "Builds the manual Burp testing slide with request flow and screenshot placeholders.",
+      "tags": [
+        "presentation",
+        "slide",
+        "manual-testing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:comparison_row",
+      "type": "function",
+      "name": "comparison_row",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        341,
+        354
+      ],
+      "summary": "Renders a secure-versus-vulnerable endpoint comparison row.",
+      "tags": [
+        "presentation",
+        "component",
+        "comparison"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_six",
+      "type": "function",
+      "name": "slide_six",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        357,
+        373
+      ],
+      "summary": "Builds the remediation slide with three secure and vulnerable outcome comparisons.",
+      "tags": [
+        "presentation",
+        "slide",
+        "remediation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:metric",
+      "type": "function",
+      "name": "metric",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        376,
+        384
+      ],
+      "summary": "Draws a numerical result card with a label and detail.",
+      "tags": [
+        "presentation",
+        "component",
+        "results"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:slide_seven",
+      "type": "function",
+      "name": "slide_seven",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        387,
+        407
+      ],
+      "summary": "Builds the results and conclusion slide with metrics and takeaways.",
+      "tags": [
+        "presentation",
+        "slide",
+        "results"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:build_presentation",
+      "type": "function",
+      "name": "build_presentation",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        410,
+        424
+      ],
+      "summary": "Creates all seven slides, saves the PowerPoint file, and validates the result.",
+      "tags": [
+        "presentation",
+        "build-script",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:scripts/build_presentation.py:validate_presentation",
+      "type": "function",
+      "name": "validate_presentation",
+      "filePath": "scripts/build_presentation.py",
+      "lineRange": [
+        427,
+        465
+      ],
+      "summary": "Checks slide count, dimensions, required text, and editability of the saved PowerPoint deck.",
+      "tags": [
+        "presentation",
+        "validation",
+        "quality-check"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:tests/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "tests/__init__.py",
+      "summary": "Marks the test suite directory as a Python package.",
+      "tags": [
+        "package",
+        "test",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:MINDSET.txt",
+      "type": "document",
+      "name": "MINDSET.txt",
+      "filePath": "MINDSET.txt",
+      "summary": "Azerbaijani project handoff note covering the CampusSecure repository location, portal and lab scenarios, presentation work, prior verification records, outstanding manual checks, and knowledge graph state.",
+      "tags": [
+        "documentation",
+        "handoff",
+        "project-status",
+        "verification"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:app/__init__.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/__init__.py",
+      "target": "function:app/__init__.py:create_app",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/__init__.py",
+      "target": "function:app/__init__.py:create_app",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:run.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:run.py",
+      "target": "function:run.py:interface_ipv4_addresses",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:run.py",
+      "target": "function:run.py:interface_ipv4_addresses",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:run.py",
+      "target": "function:run.py:selected_host",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:run.py",
+      "target": "function:run.py:selected_host",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/reset_db.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:scripts/reset_db.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:scripts/seed_db.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:scripts/seed_db.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "class:tests/test_app.py:CampusSecureTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_app.py",
+      "target": "class:tests/test_app.py:CampusSecureTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_lab_modes.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_lab_modes.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_lab_modes.py",
+      "target": "file:run.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_lab_modes.py",
+      "target": "class:tests/test_lab_modes.py:LabModeTest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_lab_modes.py",
+      "target": "class:tests/test_lab_modes.py:LabModeTest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "file:app/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:lab",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:lab",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:csrf",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:csrf",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:login",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:api_post",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:api_post",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:db_one",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:db_one",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_authentication_and_logout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_authentication_and_logout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_anonymous_and_wrong_role_access",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_anonymous_and_wrong_role_access",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_object_authorization_and_unknown_id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_object_authorization_and_unknown_id",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_announcement_authorization_and_persistence",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_announcement_authorization_and_persistence",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_profile_field_authorization_and_role_refresh",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_profile_field_authorization_and_role_refresh",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_secure_profile_rejects_mixed_fields_without_partial_write",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_secure_profile_rejects_mixed_fields_without_partial_write",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_csrf_and_input_validation_keep_database_unchanged",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_csrf_and_input_validation_keep_database_unchanged",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_reset_restores_every_fixture_and_is_repeatable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_reset_restores_every_fixture_and_is_repeatable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_page_rendering_and_local_assets",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_page_rendering_and_local_assets",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_admin_review_survives_lab_modes",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_admin_review_survives_lab_modes",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_default_mode_and_environment_selection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_default_mode_and_environment_selection",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_unsupported_mode_fails_closed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/test_security.py",
+      "target": "function:tests/test_security.py:test_unsupported_mode_fails_closed",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/__init__.py:create_app",
+      "target": "function:app/db.py:init_app",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:run.py:selected_host",
+      "target": "function:run.py:interface_ipv4_addresses",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/reset_db.py",
+      "target": "function:app/db.py:reset_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/seed_db.py",
+      "target": "function:app/db.py:seed_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/__init__.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/__init__.py",
+      "target": "file:tests/test_lab_modes.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/__init__.py",
+      "target": "file:tests/test_security.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:run.py",
+      "target": "file:tests/test_lab_modes.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "file:app/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:requests_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:requests_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:request_detail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:request_detail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:update_request_status",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:update_request_status",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:valid_announcement_form",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:valid_announcement_form",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:announcements",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:announcements",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:edit_announcement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:edit_announcement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:delete_announcement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "function:app/admin.py:delete_announcement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:login_required",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:login_required",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:login",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:logout",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "function:app/auth.py:logout",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:get_db",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:get_db",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:close_db",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:close_db",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:init_db",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:init_db",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:seed_db",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:seed_db",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:reset_db",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:reset_db",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:seed_db_command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:seed_db_command",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:reset_db_command",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:reset_db_command",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:init_app",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "function:app/db.py:init_app",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "file:app/auth.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:dashboard",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:dashboard",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:requests_list",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:requests_list",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:request_detail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "function:app/student.py:request_detail",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/auth.py:login",
+      "target": "function:app/db.py:get_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/admin.py:announcements",
+      "target": "function:app/admin.py:valid_announcement_form",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/admin.py:edit_announcement",
+      "target": "function:app/admin.py:valid_announcement_form",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/db.py:seed_db",
+      "target": "function:app/db.py:init_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/db.py:reset_db",
+      "target": "function:app/db.py:seed_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/db.py:seed_db_command",
+      "target": "function:app/db.py:seed_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/db.py:reset_db_command",
+      "target": "function:app/db.py:reset_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/admin.py",
+      "target": "file:tests/test_security.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/auth.py",
+      "target": "file:tests/test_security.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/db.py",
+      "target": "file:tests/test_security.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "file:tests/test_app.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/student.py",
+      "target": "file:tests/test_security.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PROJECT_SPEC.md",
+      "target": "file:app/__init__.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PROJECT_SPEC.md",
+      "target": "file:app/db.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:PROJECT_SPEC.md",
+      "target": "file:app/api.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:run.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:app/__init__.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:app/api.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:scripts/reset_db.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:tests/test_security.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:requirements-dev.txt",
+      "target": "document:requirements.txt",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:requirements-presentation.txt",
+      "target": "file:scripts/build_presentation.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:requirements.txt",
+      "target": "file:app/__init__.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/login.html",
+      "target": "file:app/templates/base.html",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/templates/admin/dashboard.html",
+      "target": "file:app/templates/admin/requests.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/admin/dashboard.html",
+      "target": "file:app/templates/admin/announcements.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/admin/announcements.html",
+      "target": "file:app/templates/admin/edit_announcement.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/admin/requests.html",
+      "target": "file:app/templates/admin/request_detail.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/student/dashboard.html",
+      "target": "file:app/templates/student/profile.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/student/dashboard.html",
+      "target": "file:app/templates/student/requests.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/templates/student/requests.html",
+      "target": "file:app/templates/student/request_detail.html",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/PRESENTATION_OUTLINE.md",
+      "target": "document:docs/PROJECT_ARCHITECTURE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/PRESENTATION_OUTLINE.md",
+      "target": "document:docs/SECURITY_REPORT.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/LAB_GUIDE.md",
+      "target": "document:docs/SECURITY_REPORT.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:presentation-web/README.md",
+      "target": "file:presentation-web/index.html",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:presentation-web/README.md",
+      "target": "file:presentation-web/style.css",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:presentation-web/index.html",
+      "target": "file:presentation-web/style.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:error_response",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:error_response",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:require_session",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:require_session",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:payload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:payload",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:request_record",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:request_record",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:create_announcement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:create_announcement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:update_profile",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "function:app/api.py:update_profile",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "file:app/db.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/api.py",
+      "target": "file:app/lab_policy.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:mode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:mode",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_read_student_request",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_read_student_request",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_create_announcement",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_create_announcement",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_assign_own_role",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:app/lab_policy.py",
+      "target": "function:app/lab_policy.py:may_assign_own_role",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:rgb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:rgb",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_box",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_box",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_circle",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_circle",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_line",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_line",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_text",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_text",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_pill",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_pill",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_logo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_logo",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:add_footer",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:new_slide",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:new_slide",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:header",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:header",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_one",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_one",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_two",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_two",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_three",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_three",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:scenario_card",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:scenario_card",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_four",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_four",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:screenshot_placeholder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:screenshot_placeholder",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_five",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_five",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:comparison_row",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:comparison_row",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_six",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_six",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:metric",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:metric",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_seven",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:slide_seven",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:build_presentation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:build_presentation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:validate_presentation",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:scripts/build_presentation.py",
+      "target": "function:scripts/build_presentation.py:validate_presentation",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:require_session",
+      "target": "function:app/api.py:error_response",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:request_record",
+      "target": "function:app/lab_policy.py:may_read_student_request",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:create_announcement",
+      "target": "function:app/lab_policy.py:may_create_announcement",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:create_announcement",
+      "target": "function:app/api.py:payload",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:update_profile",
+      "target": "function:app/lab_policy.py:may_assign_own_role",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:update_profile",
+      "target": "function:app/api.py:payload",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:request_record",
+      "target": "function:app/db.py:get_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:create_announcement",
+      "target": "function:app/db.py:get_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/api.py:update_profile",
+      "target": "function:app/db.py:get_db",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/lab_policy.py:may_read_student_request",
+      "target": "function:app/lab_policy.py:mode",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/lab_policy.py:may_create_announcement",
+      "target": "function:app/lab_policy.py:mode",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:app/lab_policy.py:may_assign_own_role",
+      "target": "function:app/lab_policy.py:mode",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_one",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_two",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_three",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_four",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_five",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_six",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:slide_seven",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:build_presentation",
+      "target": "function:scripts/build_presentation.py:validate_presentation",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:slide_four",
+      "target": "function:scripts/build_presentation.py:scenario_card",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:slide_five",
+      "target": "function:scripts/build_presentation.py:screenshot_placeholder",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:slide_six",
+      "target": "function:scripts/build_presentation.py:comparison_row",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:slide_seven",
+      "target": "function:scripts/build_presentation.py:metric",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:new_slide",
+      "target": "function:scripts/build_presentation.py:add_logo",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:new_slide",
+      "target": "function:scripts/build_presentation.py:add_footer",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:add_pill",
+      "target": "function:scripts/build_presentation.py:add_box",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:scripts/build_presentation.py:add_pill",
+      "target": "function:scripts/build_presentation.py:add_text",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:docs/presentation/SPEAKER_NOTES.md",
+      "target": "file:docs/presentation/CampusSecure_Presentation.pptx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:docs/presentation/CampusSecure_Presentation.pptx",
+      "target": "file:scripts/build_presentation.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:app/static/css/portal.css",
+      "target": "file:app/static/js/portal.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:presentation-web/script.js",
+      "target": "file:docs/presentation/CampusSecure_Presentation.pptx",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:runtime-config",
+      "name": "Runtime and Configuration",
+      "description": "Flask application creation, local server startup, Python package entry points, and dependency lists for the lab and presentation tooling.",
+      "nodeIds": [
+        "file:app/__init__.py",
+        "file:run.py",
+        "document:requirements-dev.txt",
+        "document:requirements-presentation.txt",
+        "document:requirements.txt",
+        "file:scripts/__init__.py"
+      ]
+    },
+    {
+      "id": "layer:api",
+      "name": "Routes and Security Policy",
+      "description": "Flask routes for sign-in, administrator and student pages, and JSON lab scenarios, including the mode-dependent authorization policy.",
+      "nodeIds": [
+        "file:app/admin.py",
+        "file:app/auth.py",
+        "file:app/student.py",
+        "file:app/api.py",
+        "file:app/lab_policy.py"
+      ]
+    },
+    {
+      "id": "layer:data",
+      "name": "SQLite Data and Fixture Operations",
+      "description": "SQLite schema and connection handling, fictional fixture seeding, and database reset commands used by the laboratory.",
+      "nodeIds": [
+        "file:scripts/reset_db.py",
+        "file:scripts/seed_db.py",
+        "file:app/db.py"
+      ]
+    },
+    {
+      "id": "layer:ui",
+      "name": "Portal User Interface",
+      "description": "Jinja templates and local CSS and JavaScript for the student and administrator portal.",
+      "nodeIds": [
+        "file:app/templates/_components.html",
+        "file:app/templates/base.html",
+        "file:app/templates/login.html",
+        "file:app/templates/admin/announcements.html",
+        "file:app/templates/admin/dashboard.html",
+        "file:app/templates/admin/edit_announcement.html",
+        "file:app/templates/admin/request_detail.html",
+        "file:app/templates/admin/requests.html",
+        "file:app/templates/student/dashboard.html",
+        "file:app/templates/student/profile.html",
+        "file:app/templates/student/request_detail.html",
+        "file:app/templates/student/requests.html",
+        "file:app/static/css/portal.css",
+        "file:app/static/js/portal.js",
+        "file:app/templates/errors/error.html"
+      ]
+    },
+    {
+      "id": "layer:presentation",
+      "name": "Presentation Materials",
+      "description": "Standalone web slides, editable PowerPoint output, its builder and speaker notes, and reserved local media directories.",
+      "nodeIds": [
+        "document:presentation-web/README.md",
+        "file:presentation-web/index.html",
+        "file:presentation-web/style.css",
+        "file:docs/presentation/CampusSecure_Presentation.pptx",
+        "document:docs/presentation/SPEAKER_NOTES.md",
+        "file:presentation-web/assets/icons/.gitkeep",
+        "file:presentation-web/assets/images/.gitkeep",
+        "file:presentation-web/assets/screenshots/.gitkeep",
+        "file:presentation-web/script.js",
+        "file:scripts/build_presentation.py"
+      ]
+    },
+    {
+      "id": "layer:test",
+      "name": "Regression Tests",
+      "description": "Unittest and pytest suites that exercise account flows, authorization boundaries, lab modes, CSRF, fixture reset, and network binding.",
+      "nodeIds": [
+        "file:tests/test_app.py",
+        "file:tests/test_lab_modes.py",
+        "file:tests/test_security.py",
+        "file:tests/__init__.py"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Project and Lab Documentation",
+      "description": "Project handoff, specification, setup instructions, architecture, lab procedure, security findings, and presentation outline.",
+      "nodeIds": [
+        "document:MINDSET.txt",
+        "document:PROJECT_SPEC.md",
+        "document:README.md",
+        "document:docs/LAB_GUIDE.md",
+        "document:docs/PRESENTATION_OUTLINE.md",
+        "document:docs/PROJECT_ARCHITECTURE.md",
+        "document:docs/SECURITY_REPORT.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project and Lab Overview",
+      "description": "Start with the project guide and specification to see why this fictional university portal exists and what its student, administrator, and laboratory workflows cover. They establish the isolated teaching setting, the Flask and SQLite architecture, and the security boundaries that later stops explain in code.",
+      "nodeIds": [
+        "document:README.md",
+        "document:PROJECT_SPEC.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Runtime and Application Factory",
+      "description": "Following the setup in Step 1, run.py starts the local server and validates an explicitly selected private interface when a wider bind is requested. The Flask factory chooses the lab mode at startup, loads the user, checks POST CSRF tokens, registers blueprints, and handles errors; requirements.txt records the runtime Flask dependency.",
+      "nodeIds": [
+        "file:run.py",
+        "file:app/__init__.py",
+        "document:requirements.txt"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "SQLite and Fictional Fixtures",
+      "description": "The factory's central dependency is app/db.py, which owns the SQLite schema, request-scoped connection, and teardown behavior. Its repeatable fictional fixtures support the seed command, while the reset command restores a known starting state for each lab comparison.",
+      "nodeIds": [
+        "file:app/db.py",
+        "file:scripts/seed_db.py",
+        "file:scripts/reset_db.py"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Sessions and HTML Access",
+      "description": "With persistent accounts in place, app/auth.py handles sign-in and sign-out and provides the decorator used to require authentication or a role on HTML views. The login template submits credentials with a CSRF token, linking the browser form to the factory's POST protection from Step 2.",
+      "nodeIds": [
+        "file:app/auth.py",
+        "file:app/templates/login.html"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Student Portal Workflows",
+      "description": "Building on the session and database rules, student routes show a dashboard, allow contact edits, and list or display requests filtered to the signed-in student. The dashboard and request templates show how those server-side ownership checks become student-facing pages and statuses.",
+      "nodeIds": [
+        "file:app/student.py",
+        "file:app/templates/student/dashboard.html",
+        "file:app/templates/student/requests.html",
+        "file:app/templates/student/request_detail.html",
+        "file:app/templates/student/profile.html"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Administrator Portal Workflows",
+      "description": "The administrator blueprint uses the same authentication and SQLite foundation to summarize activity, review academic requests, and manage announcements. Its request-detail and announcement templates expose the review and editing forms, with CSRF tokens on state-changing actions.",
+      "nodeIds": [
+        "file:app/admin.py",
+        "file:app/templates/admin/dashboard.html",
+        "file:app/templates/admin/request_detail.html",
+        "file:app/templates/admin/announcements.html"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "JSON Request Ownership",
+      "description": "After the HTML workflows, app/api.py introduces the JSON request-read endpoint used for a controlled ownership comparison. app/lab_policy.py centralizes the mode-dependent authorization decision, so the same endpoint can demonstrate why a request's owner must be checked on the server.",
+      "nodeIds": [
+        "file:app/api.py",
+        "file:app/lab_policy.py"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "JSON Announcement Role",
+      "description": "The next API scenario uses announcement creation to test whether the caller has the administrator role already required in the HTML workflow. The route validates input, while the policy module makes the secure and vulnerable authorization outcomes comparable without changing the route or schema.",
+      "nodeIds": [
+        "file:app/api.py",
+        "file:app/lab_policy.py"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "JSON Profile Field Control",
+      "description": "The final JSON scenario updates a profile and asks which fields the server allows a student to change. Read the API validation beside the mode-dependent policy to connect this field authorization decision to the contact-only edit flow from Step 5.",
+      "nodeIds": [
+        "file:app/api.py",
+        "file:app/lab_policy.py",
+        "file:app/templates/student/profile.html"
+      ]
+    },
+    {
+      "order": 10,
+      "title": "Shared Portal Frontend",
+      "description": "After tracing the server decisions, the shared Jinja shell explains how navigation, assets, and page content are assembled for both roles. The status macro, portal stylesheet, and browser script add consistent badges, responsive layouts, form feedback, confirmations, and request-table filtering.",
+      "nodeIds": [
+        "file:app/templates/base.html",
+        "file:app/templates/_components.html",
+        "file:app/static/css/portal.css",
+        "file:app/static/js/portal.js"
+      ]
+    },
+    {
+      "order": 11,
+      "title": "Regression and Mode Tests",
+      "description": "The tests now verify the account, role, ownership, CSRF, fixture, and page behavior seen in earlier steps against isolated SQLite databases. Dedicated mode tests compare the three JSON decisions and check reset and host-binding behavior, making the teaching scenarios repeatable.",
+      "nodeIds": [
+        "file:tests/test_app.py",
+        "file:tests/test_lab_modes.py",
+        "file:tests/test_security.py",
+        "document:requirements-dev.txt"
+      ]
+    },
+    {
+      "order": 12,
+      "title": "Architecture and Lab Evidence",
+      "description": "The architecture document maps the blueprints, tables, templates, and isolated deployment boundary covered so far. The lab guide gives the manual Ubuntu, Kali, and Burp procedure, while the security report records the three controlled findings, expected controls, and evidence still to collect.",
+      "nodeIds": [
+        "document:docs/PROJECT_ARCHITECTURE.md",
+        "document:docs/LAB_GUIDE.md",
+        "document:docs/SECURITY_REPORT.md"
+      ]
+    },
+    {
+      "order": 13,
+      "title": "Standalone Web Presentation",
+      "description": "The offline web deck turns the architecture and lab evidence from Step 12 into seven slides with scenario comparisons and screenshot slots. Its README explains presentation controls, while the stylesheet and script provide responsive staging, navigation, scenario switching, and local screenshot loading.",
+      "nodeIds": [
+        "document:presentation-web/README.md",
+        "file:presentation-web/index.html",
+        "file:presentation-web/style.css",
+        "file:presentation-web/script.js"
+      ]
+    },
+    {
+      "order": 14,
+      "title": "Editable Presentation Deliverable",
+      "description": "The presentation outline frames the same seven-slide story for a university audience, and the builder creates and validates an editable PowerPoint deck. Read the finished deck with its speaker notes to see how the lab architecture, three authorization scenarios, remediation, and results are communicated outside the running portal.",
+      "nodeIds": [
+        "document:docs/PRESENTATION_OUTLINE.md",
+        "file:scripts/build_presentation.py",
+        "file:docs/presentation/CampusSecure_Presentation.pptx",
+        "document:docs/presentation/SPEAKER_NOTES.md",
+        "document:requirements-presentation.txt"
+      ]
+    }
+  ]
+}

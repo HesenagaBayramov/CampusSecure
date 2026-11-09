@@ -1,0 +1,407 @@
+{
+  "name": "CampusSecure",
+  "description": "CampusSecure is a fictional university student portal for an authorized, isolated information security laboratory. Its Flask and SQLite application demonstrates server-side ownership, role, and field authorization through controlled API scenarios.",
+  "languages": [
+    "css",
+    "html",
+    "javascript",
+    "markdown",
+    "pptx",
+    "python",
+    "txt",
+    "unknown"
+  ],
+  "frameworks": [
+    "Flask",
+    "pytest"
+  ],
+  "files": [
+    {
+      "path": "MINDSET.txt",
+      "language": "txt",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "PROJECT_SPEC.md",
+      "language": "markdown",
+      "sizeLines": 70,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 195,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "app/__init__.py",
+      "language": "python",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/admin.py",
+      "language": "python",
+      "sizeLines": 156,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/api.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/auth.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/db.py",
+      "language": "python",
+      "sizeLines": 132,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/lab_policy.py",
+      "language": "python",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/static/css/portal.css",
+      "language": "css",
+      "sizeLines": 298,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/static/js/portal.js",
+      "language": "javascript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/student.py",
+      "language": "python",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "app/templates/_components.html",
+      "language": "html",
+      "sizeLines": 3,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/admin/announcements.html",
+      "language": "html",
+      "sizeLines": 10,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/admin/dashboard.html",
+      "language": "html",
+      "sizeLines": 18,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/admin/edit_announcement.html",
+      "language": "html",
+      "sizeLines": 8,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/admin/request_detail.html",
+      "language": "html",
+      "sizeLines": 55,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/admin/requests.html",
+      "language": "html",
+      "sizeLines": 51,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/base.html",
+      "language": "html",
+      "sizeLines": 83,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/errors/error.html",
+      "language": "html",
+      "sizeLines": 6,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/login.html",
+      "language": "html",
+      "sizeLines": 43,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/student/dashboard.html",
+      "language": "html",
+      "sizeLines": 40,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/student/profile.html",
+      "language": "html",
+      "sizeLines": 34,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/student/request_detail.html",
+      "language": "html",
+      "sizeLines": 13,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "app/templates/student/requests.html",
+      "language": "html",
+      "sizeLines": 16,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "docs/LAB_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 194,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/PRESENTATION_OUTLINE.md",
+      "language": "markdown",
+      "sizeLines": 95,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/PROJECT_ARCHITECTURE.md",
+      "language": "markdown",
+      "sizeLines": 100,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/SECURITY_REPORT.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/presentation/CampusSecure_Presentation.pptx",
+      "language": "pptx",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/presentation/SPEAKER_NOTES.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "presentation-web/README.md",
+      "language": "markdown",
+      "sizeLines": 32,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "presentation-web/assets/icons/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "presentation-web/assets/images/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "presentation-web/assets/screenshots/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "presentation-web/index.html",
+      "language": "html",
+      "sizeLines": 134,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "presentation-web/script.js",
+      "language": "javascript",
+      "sizeLines": 303,
+      "fileCategory": "code"
+    },
+    {
+      "path": "presentation-web/style.css",
+      "language": "css",
+      "sizeLines": 155,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "language": "txt",
+      "sizeLines": 2,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "requirements-presentation.txt",
+      "language": "txt",
+      "sizeLines": 1,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "requirements.txt",
+      "language": "txt",
+      "sizeLines": 2,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "run.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/build_presentation.py",
+      "language": "python",
+      "sizeLines": 472,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/reset_db.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/seed_db.py",
+      "language": "python",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_app.py",
+      "language": "python",
+      "sizeLines": 325,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_lab_modes.py",
+      "language": "python",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tests/test_security.py",
+      "language": "python",
+      "sizeLines": 277,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 50,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "importMap": {
+    "MINDSET.txt": [],
+    "PROJECT_SPEC.md": [],
+    "README.md": [],
+    "app/__init__.py": [
+      "app/db.py"
+    ],
+    "app/admin.py": [
+      "app/auth.py",
+      "app/db.py"
+    ],
+    "app/api.py": [
+      "app/db.py",
+      "app/lab_policy.py"
+    ],
+    "app/auth.py": [
+      "app/db.py"
+    ],
+    "app/db.py": [],
+    "app/lab_policy.py": [],
+    "app/static/css/portal.css": [],
+    "app/static/js/portal.js": [],
+    "app/student.py": [
+      "app/auth.py",
+      "app/db.py"
+    ],
+    "app/templates/_components.html": [],
+    "app/templates/admin/announcements.html": [],
+    "app/templates/admin/dashboard.html": [],
+    "app/templates/admin/edit_announcement.html": [],
+    "app/templates/admin/request_detail.html": [],
+    "app/templates/admin/requests.html": [],
+    "app/templates/base.html": [],
+    "app/templates/errors/error.html": [],
+    "app/templates/login.html": [],
+    "app/templates/student/dashboard.html": [],
+    "app/templates/student/profile.html": [],
+    "app/templates/student/request_detail.html": [],
+    "app/templates/student/requests.html": [],
+    "docs/LAB_GUIDE.md": [],
+    "docs/PRESENTATION_OUTLINE.md": [],
+    "docs/PROJECT_ARCHITECTURE.md": [],
+    "docs/SECURITY_REPORT.md": [],
+    "docs/presentation/CampusSecure_Presentation.pptx": [],
+    "docs/presentation/SPEAKER_NOTES.md": [],
+    "presentation-web/README.md": [],
+    "presentation-web/assets/icons/.gitkeep": [],
+    "presentation-web/assets/images/.gitkeep": [],
+    "presentation-web/assets/screenshots/.gitkeep": [],
+    "presentation-web/index.html": [],
+    "presentation-web/script.js": [],
+    "presentation-web/style.css": [],
+    "requirements-dev.txt": [],
+    "requirements-presentation.txt": [],
+    "requirements.txt": [],
+    "run.py": [
+      "app/__init__.py"
+    ],
+    "scripts/__init__.py": [],
+    "scripts/build_presentation.py": [],
+    "scripts/reset_db.py": [
+      "app/__init__.py",
+      "app/db.py"
+    ],
+    "scripts/seed_db.py": [
+      "app/__init__.py",
+      "app/db.py"
+    ],
+    "tests/__init__.py": [],
+    "tests/test_app.py": [
+      "app/__init__.py",
+      "app/db.py"
+    ],
+    "tests/test_lab_modes.py": [
+      "app/__init__.py",
+      "app/db.py",
+      "run.py"
+    ],
+    "tests/test_security.py": [
+      "app/__init__.py",
+      "app/db.py"
+    ]
+  },
+  "contentDigest": "68ec9ba86bb06f72bf6e386ed2815db1ee0e63cc7a58ceccd27fcbb278d7a965"
+}

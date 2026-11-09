@@ -1,0 +1,6 @@
+# Keep durable knowledge graph data; omit generated scratch and local server logs.
+.trash-*/
+tmp/
+dashboard-*.log
+intermediate/*
+!intermediate/scan-result.json

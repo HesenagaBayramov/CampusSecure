@@ -1,0 +1,1776 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "c4ebeff4d805cbfc1f89c4db2bcb654882044a5b",
+  "generatedAt": "2026-11-09T13:09:48.125Z",
+  "files": {
+    "MINDSET.txt": {
+      "filePath": "MINDSET.txt",
+      "contentHash": "f05b942ed75258864da7bda294f2f5242d16997c50318c6b778cf9ad879aedac",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 38,
+      "hasStructuralAnalysis": false
+    },
+    "PROJECT_SPEC.md": {
+      "filePath": "PROJECT_SPEC.md",
+      "contentHash": "5e78b4ec241d5914ca52e488fb39a830f8afd63777ecc6a307b17458a337f032",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "ed8b603ebfcd355ac5ccd728f1f0a96be3d1a725bc5ce0bb3ebab1ee1bd280fd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 196,
+      "hasStructuralAnalysis": false
+    },
+    "app/__init__.py": {
+      "filePath": "app/__init__.py",
+      "contentHash": "4db86aa85c189d060652f9295ce435137b30f59a4ac1ce6cd0e25f6dea17861f",
+      "functions": [
+        {
+          "name": "create_app",
+          "params": [
+            "test_config"
+          ],
+          "exported": true,
+          "lineCount": 101
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "secrets",
+          "specifiers": [
+            "secrets"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "Flask",
+            "abort",
+            "g",
+            "jsonify",
+            "redirect",
+            "render_template",
+            "request",
+            "session",
+            "url_for"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "db"
+          ]
+        }
+      ],
+      "exports": [
+        "create_app"
+      ],
+      "totalLines": 112,
+      "hasStructuralAnalysis": true
+    },
+    "app/admin.py": {
+      "filePath": "app/admin.py",
+      "contentHash": "c3764eed80c39adcd961f0decd4005d6ade13f36957b484b3078a96b46e1914f",
+      "functions": [
+        {
+          "name": "dashboard",
+          "params": [],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "requests_list",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "request_detail",
+          "params": [
+            "request_id"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "update_request_status",
+          "params": [
+            "request_id"
+          ],
+          "exported": true,
+          "lineCount": 23
+        },
+        {
+          "name": "valid_announcement_form",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "announcements",
+          "params": [],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "edit_announcement",
+          "params": [
+            "announcement_id"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "delete_announcement",
+          "params": [
+            "announcement_id"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "date"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "Blueprint",
+            "abort",
+            "flash",
+            "g",
+            "redirect",
+            "render_template",
+            "request",
+            "url_for"
+          ]
+        },
+        {
+          "source": ".auth",
+          "specifiers": [
+            "login_required"
+          ]
+        },
+        {
+          "source": ".db",
+          "specifiers": [
+            "get_db"
+          ]
+        }
+      ],
+      "exports": [
+        "dashboard",
+        "requests_list",
+        "request_detail",
+        "update_request_status",
+        "valid_announcement_form",
+        "announcements",
+        "edit_announcement",
+        "delete_announcement"
+      ],
+      "totalLines": 157,
+      "hasStructuralAnalysis": true
+    },
+    "app/api.py": {
+      "filePath": "app/api.py",
+      "contentHash": "66c4df3347885a46590f95e88020876063cc918a6bde5809afd1a2f41d6e5122",
+      "functions": [
+        {
+          "name": "error_response",
+          "params": [
+            "status",
+            "code",
+            "message"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "require_session",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "payload",
+          "params": [],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "request_record",
+          "params": [
+            "request_id"
+          ],
+          "exported": true,
+          "lineCount": 12
+        },
+        {
+          "name": "create_announcement",
+          "params": [],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "update_profile",
+          "params": [],
+          "exported": true,
+          "lineCount": 45
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "datetime",
+          "specifiers": [
+            "date"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "Blueprint",
+            "g",
+            "jsonify",
+            "request"
+          ]
+        },
+        {
+          "source": ".",
+          "specifiers": [
+            "lab_policy"
+          ]
+        },
+        {
+          "source": ".db",
+          "specifiers": [
+            "get_db"
+          ]
+        }
+      ],
+      "exports": [
+        "error_response",
+        "require_session",
+        "payload",
+        "request_record",
+        "create_announcement",
+        "update_profile"
+      ],
+      "totalLines": 123,
+      "hasStructuralAnalysis": true
+    },
+    "app/auth.py": {
+      "filePath": "app/auth.py",
+      "contentHash": "098356713c9f44a61e71052696e43a1989697beb97670ebde81aff2b5d1e6833",
+      "functions": [
+        {
+          "name": "login_required",
+          "params": [
+            "role"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "login",
+          "params": [],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "logout",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "functools",
+          "specifiers": [
+            "wraps"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "Blueprint",
+            "abort",
+            "flash",
+            "g",
+            "redirect",
+            "render_template",
+            "request",
+            "session",
+            "url_for"
+          ]
+        },
+        {
+          "source": "werkzeug.security",
+          "specifiers": [
+            "check_password_hash"
+          ]
+        },
+        {
+          "source": ".db",
+          "specifiers": [
+            "get_db"
+          ]
+        }
+      ],
+      "exports": [
+        "login_required",
+        "login",
+        "logout"
+      ],
+      "totalLines": 51,
+      "hasStructuralAnalysis": true
+    },
+    "app/db.py": {
+      "filePath": "app/db.py",
+      "contentHash": "e47f2255a526108e6206b8f019ee5747d9454575b8bf1e4402601d6443c62f72",
+      "functions": [
+        {
+          "name": "get_db",
+          "params": [],
+          "exported": true,
+          "lineCount": 7
+        },
+        {
+          "name": "close_db",
+          "params": [
+            "error"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "init_db",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "seed_db",
+          "params": [],
+          "exported": true,
+          "lineCount": 43
+        },
+        {
+          "name": "reset_db",
+          "params": [],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "seed_db_command",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "reset_db_command",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "init_app",
+          "params": [
+            "app"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sqlite3",
+          "specifiers": [
+            "sqlite3"
+          ]
+        },
+        {
+          "source": "click",
+          "specifiers": [
+            "click"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "current_app",
+            "g"
+          ]
+        },
+        {
+          "source": "werkzeug.security",
+          "specifiers": [
+            "generate_password_hash"
+          ]
+        }
+      ],
+      "exports": [
+        "get_db",
+        "close_db",
+        "init_db",
+        "seed_db",
+        "reset_db",
+        "seed_db_command",
+        "reset_db_command",
+        "init_app"
+      ],
+      "totalLines": 133,
+      "hasStructuralAnalysis": true
+    },
+    "app/lab_policy.py": {
+      "filePath": "app/lab_policy.py",
+      "contentHash": "bc6591dd3b3497f4b8ce3b8ff3eb7d18bdb379290339d5c4eb000c6b828c41f3",
+      "functions": [
+        {
+          "name": "mode",
+          "params": [],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "may_read_student_request",
+          "params": [
+            "student_id",
+            "owner_id"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "may_create_announcement",
+          "params": [
+            "role"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "may_assign_own_role",
+          "params": [],
+          "exported": true,
+          "lineCount": 2
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "flask",
+          "specifiers": [
+            "current_app"
+          ]
+        }
+      ],
+      "exports": [
+        "mode",
+        "may_read_student_request",
+        "may_create_announcement",
+        "may_assign_own_role"
+      ],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "app/static/css/portal.css": {
+      "filePath": "app/static/css/portal.css",
+      "contentHash": "e9aec109189b3bcccc9b2b7a87cf9bb20af3e1f3c829596776de799d5accd8c5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 299,
+      "hasStructuralAnalysis": false
+    },
+    "app/static/js/portal.js": {
+      "filePath": "app/static/js/portal.js",
+      "contentHash": "8f2ea4c625dca8ae10303a09bcac7e9b94d47322d10cbdd961881e6318159900",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 53,
+      "hasStructuralAnalysis": true
+    },
+    "app/student.py": {
+      "filePath": "app/student.py",
+      "contentHash": "26e0e88d8f8d17353e40230703afcd8e77999ac7f74177b8c22ec049154a49f7",
+      "functions": [
+        {
+          "name": "dashboard",
+          "params": [],
+          "exported": true,
+          "lineCount": 29
+        },
+        {
+          "name": "profile",
+          "params": [],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "requests_list",
+          "params": [],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "request_detail",
+          "params": [
+            "request_id"
+          ],
+          "exported": true,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "flask",
+          "specifiers": [
+            "Blueprint",
+            "abort",
+            "flash",
+            "g",
+            "redirect",
+            "render_template",
+            "request",
+            "url_for"
+          ]
+        },
+        {
+          "source": ".auth",
+          "specifiers": [
+            "login_required"
+          ]
+        },
+        {
+          "source": ".db",
+          "specifiers": [
+            "get_db"
+          ]
+        }
+      ],
+      "exports": [
+        "dashboard",
+        "profile",
+        "requests_list",
+        "request_detail"
+      ],
+      "totalLines": 89,
+      "hasStructuralAnalysis": true
+    },
+    "app/templates/_components.html": {
+      "filePath": "app/templates/_components.html",
+      "contentHash": "9820f2d60c8a24db464d286cf6fecafe7ee82ce458dfc6440c6d169ad5d8e0db",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/admin/announcements.html": {
+      "filePath": "app/templates/admin/announcements.html",
+      "contentHash": "6a2567e98f0e27759feca507a829983a701034a0040818b18bacf2162ccf6615",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/admin/dashboard.html": {
+      "filePath": "app/templates/admin/dashboard.html",
+      "contentHash": "2f176338cdd5792cff6e346c0f98769bc56bc49be8832df9c3d672f623860aeb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/admin/edit_announcement.html": {
+      "filePath": "app/templates/admin/edit_announcement.html",
+      "contentHash": "8d8cfdff4ae828a34f0c49b7c391a85a0ebbfe6637fc2950b81a3bf3ee9496d5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/admin/request_detail.html": {
+      "filePath": "app/templates/admin/request_detail.html",
+      "contentHash": "896b35658ab1f7e8bdc8a32050e6ccf1f38aaba6914714cc11e40f9266560e14",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 56,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/admin/requests.html": {
+      "filePath": "app/templates/admin/requests.html",
+      "contentHash": "0b5abef417381e311006db1cf9d3f99f1f5be43f81d7a297661bf67b3167e8c1",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 52,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/base.html": {
+      "filePath": "app/templates/base.html",
+      "contentHash": "b194e06703df986f24f0f3939e98eb938a516f324af8986520292f597b5f4177",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 84,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/errors/error.html": {
+      "filePath": "app/templates/errors/error.html",
+      "contentHash": "37d14b74cf6e023019212a58ef50ff87201d4a431328b0099c5d827b757b6733",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/login.html": {
+      "filePath": "app/templates/login.html",
+      "contentHash": "c3ed4e5a0175e6c8dcde98d0d18c03e16198bfdd1ef2907ac6a21032d7d8f5f6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 44,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/student/dashboard.html": {
+      "filePath": "app/templates/student/dashboard.html",
+      "contentHash": "99db84ca477c24e6eade5519bd1a93b431a3b0938409060908d529c5e182a9f2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 41,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/student/profile.html": {
+      "filePath": "app/templates/student/profile.html",
+      "contentHash": "311d811f2b6166ff6a11342c2176caa277b3af2fb26971f2ca0317b8f9b72314",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 35,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/student/request_detail.html": {
+      "filePath": "app/templates/student/request_detail.html",
+      "contentHash": "ebce091426319d57f5fdd7f179ee4ba998b23c4ce58b86addd9445803a6be8a2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 14,
+      "hasStructuralAnalysis": false
+    },
+    "app/templates/student/requests.html": {
+      "filePath": "app/templates/student/requests.html",
+      "contentHash": "5152f5a64f83918e61f487964cb30906eb0b517f419ff2015f97a306960bb761",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": false
+    },
+    "docs/LAB_GUIDE.md": {
+      "filePath": "docs/LAB_GUIDE.md",
+      "contentHash": "c0fce17db2191c83f6899b2c96c2ccced016d268b59665ede2f69dc534345ad7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 195,
+      "hasStructuralAnalysis": false
+    },
+    "docs/PRESENTATION_OUTLINE.md": {
+      "filePath": "docs/PRESENTATION_OUTLINE.md",
+      "contentHash": "4cbe7d24ce0bca88742d8c0e1117e7e67928f95583f5a29e7fc25adf7fd22796",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 96,
+      "hasStructuralAnalysis": false
+    },
+    "docs/PROJECT_ARCHITECTURE.md": {
+      "filePath": "docs/PROJECT_ARCHITECTURE.md",
+      "contentHash": "451aaf431bc7defa87a40ff80906cfc8ab2ba33e3a8e6d022ad6ef01bad52340",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 101,
+      "hasStructuralAnalysis": false
+    },
+    "docs/SECURITY_REPORT.md": {
+      "filePath": "docs/SECURITY_REPORT.md",
+      "contentHash": "5d4a8061ea0edc7df8b19a436b354670b48eeec60a4d2810eb9a83564255fad5",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 152,
+      "hasStructuralAnalysis": false
+    },
+    "docs/presentation/CampusSecure_Presentation.pptx": {
+      "filePath": "docs/presentation/CampusSecure_Presentation.pptx",
+      "contentHash": "8f6d3afa91f17924da5cdf18c9624ae08c49c922c0e2076252bad6138fba524c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 144,
+      "hasStructuralAnalysis": false
+    },
+    "docs/presentation/SPEAKER_NOTES.md": {
+      "filePath": "docs/presentation/SPEAKER_NOTES.md",
+      "contentHash": "398ff18fdd88aa1d5fe2300ceaa93efa99319b8a932a5d3ee035957afdabf6fa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 32,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/README.md": {
+      "filePath": "presentation-web/README.md",
+      "contentHash": "32195801caf3102ac18b51fe8eba42227be3062f4bfdfec7f06e7c1baa5f0ae7",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 33,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/assets/icons/.gitkeep": {
+      "filePath": "presentation-web/assets/icons/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/assets/images/.gitkeep": {
+      "filePath": "presentation-web/assets/images/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/assets/screenshots/.gitkeep": {
+      "filePath": "presentation-web/assets/screenshots/.gitkeep",
+      "contentHash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/index.html": {
+      "filePath": "presentation-web/index.html",
+      "contentHash": "11a91b8526623b7cc27d950cfea9dc20d7b1ca91c1e627a0e099453f56b7a51a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 135,
+      "hasStructuralAnalysis": false
+    },
+    "presentation-web/script.js": {
+      "filePath": "presentation-web/script.js",
+      "contentHash": "451eaf672ec924229827ec5823a166f03bf52837e0a1200eb7fdf689f1a45282",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 304,
+      "hasStructuralAnalysis": true
+    },
+    "presentation-web/style.css": {
+      "filePath": "presentation-web/style.css",
+      "contentHash": "4d543706afbe5a85a07bd3f8c9b2fef085a4e387634ec78e74e5f1bbe567db70",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 156,
+      "hasStructuralAnalysis": false
+    },
+    "requirements-dev.txt": {
+      "filePath": "requirements-dev.txt",
+      "contentHash": "8636f9ab1a075be9f3039e2a6471837259c4f36b625bcaf7a3d9a1edd2419c6d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
+    "requirements-presentation.txt": {
+      "filePath": "requirements-presentation.txt",
+      "contentHash": "57274bcbabf5f9b9abd85b44a5d826346a5e67828716ff96fb6b46a027a43281",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": false
+    },
+    "requirements.txt": {
+      "filePath": "requirements.txt",
+      "contentHash": "dd6433749a63576882b338ac9d10b790ea8bd65c4a7d1b4c47b922ed34c12de6",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 3,
+      "hasStructuralAnalysis": false
+    },
+    "run.py": {
+      "filePath": "run.py",
+      "contentHash": "ffdf63a3f90d57da4128b1529b544c428679fc96f879342a048507daaedb5a42",
+      "functions": [
+        {
+          "name": "interface_ipv4_addresses",
+          "params": [
+            "interface"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "selected_host",
+          "params": [],
+          "exported": true,
+          "lineCount": 18
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "ipaddress",
+          "specifiers": [
+            "ipaddress"
+          ]
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            "json"
+          ]
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        }
+      ],
+      "exports": [
+        "interface_ipv4_addresses",
+        "selected_host"
+      ],
+      "totalLines": 63,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/__init__.py": {
+      "filePath": "scripts/__init__.py",
+      "contentHash": "81fe3e0ecbccc7f663668a943d199530f8427c93cded78657080b72c67e2fd3b",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/build_presentation.py": {
+      "filePath": "scripts/build_presentation.py",
+      "contentHash": "a5198b3d48581edde8558cfe396a4846970e307f4a7bd30071ec3744f879f4e2",
+      "functions": [
+        {
+          "name": "rgb",
+          "params": [
+            "hex_value"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "add_box",
+          "params": [
+            "slide",
+            "x",
+            "y",
+            "w",
+            "h",
+            "fill",
+            "line_color",
+            "radius",
+            "line_width",
+            "dash",
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 16
+        },
+        {
+          "name": "add_circle",
+          "params": [
+            "slide",
+            "x",
+            "y",
+            "d",
+            "fill",
+            "line_color",
+            "line_width"
+          ],
+          "exported": true,
+          "lineCount": 10
+        },
+        {
+          "name": "add_line",
+          "params": [
+            "slide",
+            "x1",
+            "y1",
+            "x2",
+            "y2",
+            "color",
+            "width",
+            "dash"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "add_text",
+          "params": [
+            "slide",
+            "value",
+            "x",
+            "y",
+            "w",
+            "h",
+            "size",
+            "color",
+            "bold",
+            "align",
+            "valign",
+            "font",
+            "margin",
+            "name"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "add_pill",
+          "params": [
+            "slide",
+            "value",
+            "x",
+            "y",
+            "w",
+            "fill",
+            "color",
+            "size",
+            "h",
+            "line_color"
+          ],
+          "exported": true,
+          "lineCount": 5
+        },
+        {
+          "name": "add_logo",
+          "params": [
+            "slide"
+          ],
+          "exported": true,
+          "lineCount": 6
+        },
+        {
+          "name": "add_footer",
+          "params": [
+            "slide",
+            "number",
+            "section"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "new_slide",
+          "params": [
+            "presentation",
+            "number",
+            "section"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "header",
+          "params": [
+            "slide",
+            "eyebrow",
+            "title",
+            "subtitle"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "slide_one",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 25
+        },
+        {
+          "name": "slide_two",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 38
+        },
+        {
+          "name": "slide_three",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 35
+        },
+        {
+          "name": "scenario_card",
+          "params": [
+            "slide",
+            "x",
+            "number",
+            "short",
+            "title",
+            "endpoint",
+            "explanation",
+            "accent"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "slide_four",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "screenshot_placeholder",
+          "params": [
+            "slide",
+            "x",
+            "y",
+            "w",
+            "h",
+            "label",
+            "accent"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "slide_five",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 24
+        },
+        {
+          "name": "comparison_row",
+          "params": [
+            "slide",
+            "y",
+            "number",
+            "title",
+            "endpoint",
+            "vulnerable",
+            "secure",
+            "remediation"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "slide_six",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 17
+        },
+        {
+          "name": "metric",
+          "params": [
+            "slide",
+            "x",
+            "number",
+            "label",
+            "detail",
+            "accent"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "slide_seven",
+          "params": [
+            "presentation"
+          ],
+          "exported": true,
+          "lineCount": 21
+        },
+        {
+          "name": "build_presentation",
+          "params": [
+            "output"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "validate_presentation",
+          "params": [
+            "path"
+          ],
+          "exported": true,
+          "lineCount": 39
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "pptx",
+          "specifiers": [
+            "Presentation"
+          ]
+        },
+        {
+          "source": "pptx.dml.color",
+          "specifiers": [
+            "RGBColor"
+          ]
+        },
+        {
+          "source": "pptx.enum.dml",
+          "specifiers": [
+            "MSO_LINE_DASH_STYLE"
+          ]
+        },
+        {
+          "source": "pptx.enum.shapes",
+          "specifiers": [
+            "MSO_CONNECTOR",
+            "MSO_SHAPE",
+            "MSO_SHAPE_TYPE"
+          ]
+        },
+        {
+          "source": "pptx.enum.text",
+          "specifiers": [
+            "MSO_ANCHOR",
+            "MSO_AUTO_SIZE",
+            "PP_ALIGN"
+          ]
+        },
+        {
+          "source": "pptx.util",
+          "specifiers": [
+            "Inches",
+            "Pt"
+          ]
+        }
+      ],
+      "exports": [
+        "rgb",
+        "add_box",
+        "add_circle",
+        "add_line",
+        "add_text",
+        "add_pill",
+        "add_logo",
+        "add_footer",
+        "new_slide",
+        "header",
+        "slide_one",
+        "slide_two",
+        "slide_three",
+        "scenario_card",
+        "slide_four",
+        "screenshot_placeholder",
+        "slide_five",
+        "comparison_row",
+        "slide_six",
+        "metric",
+        "slide_seven",
+        "build_presentation",
+        "validate_presentation"
+      ],
+      "totalLines": 473,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/reset_db.py": {
+      "filePath": "scripts/reset_db.py",
+      "contentHash": "2e835633bc3b21ded8c7c40078f63060261287675ad0543e0036459bba8faf29",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.db",
+          "specifiers": [
+            "reset_db"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/seed_db.py": {
+      "filePath": "scripts/seed_db.py",
+      "contentHash": "7b39f6b59692720eeea99440484428d384f23aa73ebbfa2c7a00d7610026fa6b",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.db",
+          "specifiers": [
+            "seed_db"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 11,
+      "hasStructuralAnalysis": true
+    },
+    "tests/__init__.py": {
+      "filePath": "tests/__init__.py",
+      "contentHash": "723854599b461ae31476fe8209f654dfaf9a2120885d9adb44a21a5902991285",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_app.py": {
+      "filePath": "tests/test_app.py",
+      "contentHash": "191f529c545c2fc9f83135ede96c4e71befb09ac3fb56957c4df03ce3c81819d",
+      "functions": [],
+      "classes": [
+        {
+          "name": "CampusSecureTest",
+          "methods": [
+            "setUp",
+            "tearDown",
+            "token",
+            "login",
+            "post",
+            "test_seed_is_idempotent_and_passwords_are_hashed",
+            "test_login_logout_and_wrong_password",
+            "test_protected_routes_and_role_boundaries",
+            "test_request_ownership_and_profile_update",
+            "test_admin_announcement_crud_and_csrf",
+            "test_admin_approves_pending_request_and_student_sees_result",
+            "test_admin_rejects_pending_request_and_bob_sees_result",
+            "test_student_cannot_manage_requests_or_change_status",
+            "test_request_status_rejects_invalid_decisions_and_unknown_ids",
+            "test_reset_restores_original_data_and_credentials",
+            "test_reset_script_restores_original_request_statuses",
+            "test_html_routes_remain_secure_after_config_mutation",
+            "test_stage_two_pages_render_with_local_assets",
+            "test_form_feedback_keeps_entered_values",
+            "test_custom_error_pages"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 301
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "sqlite3",
+          "specifiers": [
+            "sqlite3"
+          ]
+        },
+        {
+          "source": "subprocess",
+          "specifiers": [
+            "subprocess"
+          ]
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            "sys"
+          ]
+        },
+        {
+          "source": "tempfile",
+          "specifiers": [
+            "tempfile"
+          ]
+        },
+        {
+          "source": "unittest",
+          "specifiers": [
+            "unittest"
+          ]
+        },
+        {
+          "source": "contextlib",
+          "specifiers": [
+            "closing"
+          ]
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            "Path"
+          ]
+        },
+        {
+          "source": "flask",
+          "specifiers": [
+            "abort"
+          ]
+        },
+        {
+          "source": "jinja2",
+          "specifiers": [
+            "StrictUndefined"
+          ]
+        },
+        {
+          "source": "werkzeug.security",
+          "specifiers": [
+            "check_password_hash"
+          ]
+        },
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.db",
+          "specifiers": [
+            "get_db",
+            "reset_db",
+            "seed_db"
+          ]
+        }
+      ],
+      "exports": [
+        "CampusSecureTest"
+      ],
+      "totalLines": 326,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_lab_modes.py": {
+      "filePath": "tests/test_lab_modes.py",
+      "contentHash": "fdea362355e4bbb8da4b6641d19981804787ba470938460e12e67aa56b9d10f6",
+      "functions": [],
+      "classes": [
+        {
+          "name": "LabModeTest",
+          "methods": [
+            "make_lab",
+            "login",
+            "csrf_headers",
+            "test_mode_selection_is_captured_at_factory_startup",
+            "test_modes_have_the_same_routes_and_database_schema",
+            "test_request_idor_comparison_and_json_errors",
+            "test_announcement_function_authorization_comparison",
+            "test_profile_field_authorization_comparison_and_role_refresh",
+            "test_api_body_validation_and_csrf_failures_are_json",
+            "test_reset_restores_all_fictional_data_after_lab_actions",
+            "test_host_binding_requires_explicit_named_interface"
+          ],
+          "properties": [],
+          "exported": true,
+          "lineCount": 226
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            "os"
+          ]
+        },
+        {
+          "source": "tempfile",
+          "specifiers": [
+            "tempfile"
+          ]
+        },
+        {
+          "source": "unittest",
+          "specifiers": [
+            "unittest"
+          ]
+        },
+        {
+          "source": "unittest.mock",
+          "specifiers": [
+            "patch"
+          ]
+        },
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.db",
+          "specifiers": [
+            "get_db",
+            "reset_db",
+            "seed_db"
+          ]
+        },
+        {
+          "source": "run",
+          "specifiers": [
+            "selected_host"
+          ]
+        }
+      ],
+      "exports": [
+        "LabModeTest"
+      ],
+      "totalLines": 243,
+      "hasStructuralAnalysis": true
+    },
+    "tests/test_security.py": {
+      "filePath": "tests/test_security.py",
+      "contentHash": "aaa9cb663fb526bee05547df819cc6a67ce58d6dc88367e96a7f10f2010b93a0",
+      "functions": [
+        {
+          "name": "lab",
+          "params": [
+            "request",
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "csrf",
+          "params": [
+            "client"
+          ],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "login",
+          "params": [
+            "client",
+            "username",
+            "password"
+          ],
+          "exported": true,
+          "lineCount": 9
+        },
+        {
+          "name": "api_post",
+          "params": [
+            "client",
+            "path",
+            "data"
+          ],
+          "exported": true,
+          "lineCount": 2
+        },
+        {
+          "name": "db_one",
+          "params": [
+            "app",
+            "query",
+            "parameters"
+          ],
+          "exported": true,
+          "lineCount": 4
+        },
+        {
+          "name": "test_authentication_and_logout",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 13
+        },
+        {
+          "name": "test_anonymous_and_wrong_role_access",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 15
+        },
+        {
+          "name": "test_object_authorization_and_unknown_id",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 20
+        },
+        {
+          "name": "test_announcement_authorization_and_persistence",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "test_profile_field_authorization_and_role_refresh",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 22
+        },
+        {
+          "name": "test_secure_profile_rejects_mixed_fields_without_partial_write",
+          "params": [
+            "tmp_path"
+          ],
+          "exported": true,
+          "lineCount": 14
+        },
+        {
+          "name": "test_csrf_and_input_validation_keep_database_unchanged",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 8
+        },
+        {
+          "name": "test_reset_restores_every_fixture_and_is_repeatable",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "test_page_rendering_and_local_assets",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 26
+        },
+        {
+          "name": "test_admin_review_survives_lab_modes",
+          "params": [
+            "lab"
+          ],
+          "exported": true,
+          "lineCount": 11
+        },
+        {
+          "name": "test_default_mode_and_environment_selection",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 18
+        },
+        {
+          "name": "test_unsupported_mode_fails_closed",
+          "params": [
+            "tmp_path",
+            "monkeypatch"
+          ],
+          "exported": true,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "re",
+          "specifiers": [
+            "re"
+          ]
+        },
+        {
+          "source": "pytest",
+          "specifiers": [
+            "pytest"
+          ]
+        },
+        {
+          "source": "jinja2",
+          "specifiers": [
+            "StrictUndefined"
+          ]
+        },
+        {
+          "source": "werkzeug.security",
+          "specifiers": [
+            "check_password_hash"
+          ]
+        },
+        {
+          "source": "app",
+          "specifiers": [
+            "create_app"
+          ]
+        },
+        {
+          "source": "app.db",
+          "specifiers": [
+            "get_db",
+            "reset_db",
+            "seed_db"
+          ]
+        }
+      ],
+      "exports": [
+        "lab",
+        "csrf",
+        "login",
+        "api_post",
+        "db_one",
+        "test_authentication_and_logout",
+        "test_anonymous_and_wrong_role_access",
+        "test_object_authorization_and_unknown_id",
+        "test_announcement_authorization_and_persistence",
+        "test_profile_field_authorization_and_role_refresh",
+        "test_secure_profile_rejects_mixed_fields_without_partial_write",
+        "test_csrf_and_input_validation_keep_database_unchanged",
+        "test_reset_restores_every_fixture_and_is_repeatable",
+        "test_page_rendering_and_local_assets",
+        "test_admin_review_survives_lab_modes",
+        "test_default_mode_and_environment_selection",
+        "test_unsupported_mode_fails_closed"
+      ],
+      "totalLines": 278,
+      "hasStructuralAnalysis": true
+    }
+  }
+}
